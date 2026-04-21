@@ -1,0 +1,155 @@
+{
+  "client": {
+    "name": "Anastasiya Karaneuskaya",
+    "email": "anastasiya.karaneuskaya@gmail.com",
+    "phone": "+48 578 296 504",
+    "city": "Wrocław",
+    "country": "Poland",
+    "linkedin": "LinkedIn",
+    "label": "Multilingual operations specialist with live operations, warehouse logistics, KPI management, ERP workflows, and team training experience",
+    "work_authorization": "Valid TRC until Sep 2026"
+  },
+  "core_positioning": {
+    "level": "mid",
+    "strategy": "Proven Executor",
+    "notes": "Best fit is operations specialist, operations analyst, logistics coordinator, supply chain operations, customer/service operations, and process improvement roles. Position honestly as a multilingual operations operator with KPI, SLA, live ops, warehouse documentation, ERP, and training strengths. Avoid finance-heavy, SAP-dependent, SQL-heavy, procurement negotiation, and advanced analytics roles per source guidance."
+  },
+  "summary_base": [
+    "Multilingual operations specialist with 4+ years across live operations and warehouse logistics environments in Poland and Belarus, supporting real-time operations, order flows, and outbound documentation at scale.",
+    "Strongest evidence includes exceeding operational KPI targets by 60%, maintaining 100% quality scores, training roughly 40 new hires, supervising 30+ agents, and supporting approximately 3,000 daily orders across 2 active markets.",
+    "Brings ERP fluency, KPI and SLA management, escalation handling, process optimisation, warehouse documentation, cross-functional coordination, and strong multilingual capability for international operations teams."
+  ],
+  "experience": [
+    {
+      "company": "Just Eat Takeaway",
+      "position": "Live Operations Specialist",
+      "location": "Wrocław, Poland",
+      "startDate": "2025-09",
+      "endDate": "Present",
+      "summary": "Global food delivery platform (~20,000 employees). Oversees real-time courier operations across the Netherlands and Denmark during off-hours, deputising for senior management on weekly rotation.",
+      "highlights": [
+        "**Cut roughly 50 avoidable order cancellations per day** by building an updated city closing schedule, securing senior approval, and reducing compensation-triggering errors while saving approximately 30 minutes of manual checking daily across a 60+ person team.",
+        "**Trained around 40 new hires with zero negative feedback** across onboarding and buddy sessions, including designing an evening training module that closed a recurring knowledge gap for approximately 5 new agents per month.",
+        "**Supervised 30+ agents during senior-level shifts** while handling escalations, task distribution, and real-time dashboard monitoring for approximately 3,000 daily orders across 2 markets.",
+        "**Eliminated 3-4 outdated procedures** by auditing the internal knowledge base, validating process gaps with agents, and submitting recommendations later adopted by management.",
+        "**Improved routine incident handling through bot-launch support** by contributing to a cross-functional automation project that reduced manual handling of standard operational issues."
+      ]
+    },
+    {
+      "company": "Just Eat Takeaway",
+      "position": "Junior Live Operations Specialist",
+      "location": "Wrocław, Poland",
+      "startDate": "2024-09",
+      "endDate": "2025-08",
+      "summary": "Promoted to Live Operations Specialist within 12 months based on sustained KPI performance and quality results in a high-volume live operations environment.",
+      "highlights": [
+        "**Exceeded courier inquiry resolution KPI by 60%** by building deep operational knowledge within 2 months and developing a faster workflow for live chat and phone support across 80+ daily issues.",
+        "**Maintained 100% quality scores from month 2 onward** while sustaining SLA compliance approximately 15% above target and recording zero quality failures after onboarding.",
+        "**Resolved critical live incidents in real time** including courier safety, theft, and harassment escalations while coordinating with customer service and courier coordination teams to maintain service continuity."
+      ]
+    },
+    {
+      "company": "Smarton (Belkantongroup)",
+      "position": "Warehouse Logistics Specialist",
+      "location": "Minsk, Belarus",
+      "startDate": "2021-01",
+      "endDate": "2023-05",
+      "summary": "National importer and distributor of stationery and office supplies (~150 warehouse staff, 500+ across the parent group). Promoted from labeler to warehouse logistics specialist within 2 months.",
+      "highlights": [
+        "**Processed 300+ delivery notes and invoices per day** while maintaining documentation accuracy across 1,000+ outbound orders and preparing CMR paperwork for international shipments.",
+        "**Handled triple workload with zero errors for one week** when 3 of 5 department members fell ill, issuing approximately 4,000 delivery notes and warehouse documents solo while keeping all drivers on schedule.",
+        "**Exceeded operational KPIs by up to 30%** on document processing speed, contributing to faster driver turnaround and smoother warehouse flow during high-volume periods.",
+        "**Onboarded warehouse staff on ERP system 1C procedures** after 12 months of tenure while also managing 40+ daily self pick-up client transactions with full documentation accuracy."
+      ]
+    },
+    {
+      "company": "AgroFoodGroup",
+      "position": "Warehouse Logistics Specialist",
+      "location": "Minsk, Belarus",
+      "startDate": "2023-06",
+      "endDate": "2023-08",
+      "summary": "Food and beverage wholesale distributor. Short-term role prior to planned international relocation to Poland, with direct reporting to the CEO.",
+      "highlights": [
+        "**Managed end-to-end warehouse documentation flow** across delivery notes, invoices, picking lists, and consolidation lists to support accurate order fulfilment and on-time driver distribution.",
+        "**Coordinated daily ERP-based order processing** while issuing CMR documents for international shipments and handling client self pick-up documentation with full outbound accuracy."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Wrocław Business University",
+      "area": "Business Management",
+      "studyType": "Bachelor's",
+      "startDate": "2023",
+      "endDate": "2026",
+      "location": "Wrocław, Poland",
+      "note": "Expected 2026 | Rector's Scholarship | Erasmus+ Scholarship (AI in Tertiary Sectors, France) | GPA: 4.8/5.0"
+    },
+    {
+      "institution": "Minsk State Linguistic University",
+      "area": "Linguistic Support for Tourism and Hospitality",
+      "studyType": "Bachelor's",
+      "startDate": "2016",
+      "endDate": "2020",
+      "location": "Minsk, Belarus"
+    }
+  ],
+  "skills": {
+    "Operations & Logistics": [
+      "Process Optimisation",
+      "KPI Management",
+      "SLA Compliance",
+      "Escalation Management",
+      "Order Fulfilment",
+      "Inventory Management",
+      "Warehouse Operations",
+      "Real-Time Operations Monitoring"
+    ],
+    "Tools & Systems": [
+      "ERP Systems",
+      "1C",
+      "Zendesk",
+      "Sendbird",
+      "Slack",
+      "Jira",
+      "Microsoft Excel",
+      "Microsoft Teams",
+      "Microsoft Outlook"
+    ],
+    "Operations Delivery": [
+      "Team Training",
+      "Cross-functional Coordination",
+      "Incident Resolution",
+      "Warehouse Documentation",
+      "Order Management",
+      "International Team Collaboration"
+    ]
+  },
+  "languages": [
+    {
+      "language": "English",
+      "level": "C1"
+    },
+    {
+      "language": "Polish",
+      "level": "B2"
+    },
+    {
+      "language": "Russian",
+      "level": "Native"
+    },
+    {
+      "language": "Belarusian",
+      "level": "Native"
+    },
+    {
+      "language": "German",
+      "level": "A2"
+    }
+  ],
+  "certifications": [
+    "Supply Chain Logistics (Rutgers/Coursera, 2026)",
+    "AI in Business (Microsoft, 2026)",
+    "Supply Chain Operations (In Progress — Expected May 2026)"
+  ]
+}

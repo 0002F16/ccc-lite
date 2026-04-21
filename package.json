@@ -1,0 +1,13 @@
+{
+  "name": "ccc-resume-studio-lite",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Simple UI wrapper for the CCC resume engine experiment",
+  "scripts": {
+    "dev": "node --watch server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
