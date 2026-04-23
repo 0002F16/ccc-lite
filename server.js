@@ -16,8 +16,17 @@ const ENGINE_ROOT = path.join(APP_ROOT, 'engine');
 const ENGINE_SCRIPT = path.join(ENGINE_ROOT, 'run_resume_engine.py');
 const CLIENTS_DIR = path.join(APP_ROOT, 'data', 'clients');
 const ENV_FILE = path.join(APP_ROOT, '.env');
+const REQUIREMENTS_FILE = path.join(APP_ROOT, 'requirements.txt');
+const PYTHON_VENV_DIR = path.join(APP_ROOT, '.venv');
+const PYTHON_VENV_BIN_DIR = process.platform === 'win32'
+  ? path.join(PYTHON_VENV_DIR, 'Scripts')
+  : path.join(PYTHON_VENV_DIR, 'bin');
+const PYTHON_RUNTIME = process.platform === 'win32'
+  ? path.join(PYTHON_VENV_BIN_DIR, 'python.exe')
+  : path.join(PYTHON_VENV_BIN_DIR, 'python3');
 
 let currentRun = null;
+let pythonBootstrapPromise = null;
 
 function loadEnvFile(filePath) {
   if (!fs.existsSync(filePath)) return {};
@@ -65,6 +74,51 @@ async function exists(filePath) {
 
 async function readJson(filePath) {
   return JSON.parse(await fsp.readFile(filePath, 'utf8'));
+}
+
+function pythonPathEnv() {
+  const current = process.env.PATH || '';
+  return `${PYTHON_VENV_BIN_DIR}${path.delimiter}${current}`;
+}
+
+async function bootstrapPythonRuntime() {
+  if (pythonBootstrapPromise) return pythonBootstrapPromise;
+
+  pythonBootstrapPromise = (async () => {
+    if (!(await exists(REQUIREMENTS_FILE))) {
+      throw new Error('Missing requirements.txt for Python runtime bootstrap.');
+    }
+
+    if (!(await exists(PYTHON_RUNTIME))) {
+      await execFileAsync('python3', ['-m', 'venv', PYTHON_VENV_DIR], {
+        cwd: APP_ROOT,
+        maxBuffer: 10 * 1024 * 1024,
+      });
+    }
+
+    await execFileAsync(PYTHON_RUNTIME, ['-m', 'pip', 'install', '--upgrade', 'pip'], {
+      cwd: APP_ROOT,
+      maxBuffer: 10 * 1024 * 1024,
+      env: {
+        ...process.env,
+        PATH: pythonPathEnv(),
+      },
+    });
+
+    await execFileAsync(PYTHON_RUNTIME, ['-m', 'pip', 'install', '-r', REQUIREMENTS_FILE], {
+      cwd: APP_ROOT,
+      maxBuffer: 20 * 1024 * 1024,
+      env: {
+        ...process.env,
+        PATH: pythonPathEnv(),
+      },
+    });
+  })().catch((error) => {
+    pythonBootstrapPromise = null;
+    throw error;
+  });
+
+  return pythonBootstrapPromise;
 }
 
 function providerState() {
@@ -342,6 +396,8 @@ app.post('/api/generate', async (req, res) => {
     };
     await fsp.writeFile(jobFile, `${JSON.stringify(jobPayload, null, 2)}\n`, 'utf8');
 
+    await bootstrapPythonRuntime();
+
     const args = [
       ENGINE_SCRIPT,
       '--client-name', client.name,
@@ -354,12 +410,13 @@ app.post('/api/generate', async (req, res) => {
       '--llm-agent', llmAgent || 'samantha'
     ];
 
-    const { stdout, stderr } = await execFileAsync('python3', args, {
+    const { stdout, stderr } = await execFileAsync(PYTHON_RUNTIME, args, {
       cwd: ENGINE_ROOT,
       maxBuffer: 10 * 1024 * 1024,
       timeout: 20 * 60 * 1000,
       env: {
         ...process.env,
+        PATH: pythonPathEnv(),
         OPENAI_API_KEY: state.openaiApiKey,
         OPENAI_MODEL: state.openaiModel,
         GEMINI_API_KEY: state.geminiApiKey,

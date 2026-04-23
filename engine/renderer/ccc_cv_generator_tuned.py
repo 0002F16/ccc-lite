@@ -14,6 +14,10 @@ from reportlab.lib.enums import TA_CENTER
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
+RENDERER_DIR = Path(__file__).resolve().parent
+APP_ROOT = RENDERER_DIR.parent.parent
+LOCAL_FONTS_DIR = APP_ROOT / "fonts"
+
 BLACK = colors.HexColor("#1A1A1A")
 ACCENT = colors.HexColor("#1F3864")
 RULE_COLOR = colors.HexColor("#1F3864")
@@ -56,20 +60,29 @@ FONT_BOLD = "Helvetica-Bold"
 def configure_fonts():
     global FONT_REGULAR, FONT_BOLD
 
+    bundled_unicode = LOCAL_FONTS_DIR / "ArialUnicode.ttf"
+    bundled_arial = LOCAL_FONTS_DIR / "Arial.ttf"
+    bundled_arial_bold = LOCAL_FONTS_DIR / "Arial-Bold.ttf"
+
     regular_candidates = [
-        "/System/Library/Fonts/Supplemental/Arial.ttf",
+        str(bundled_unicode),
+        str(bundled_arial),
         "/System/Library/Fonts/Supplemental/Arial Unicode.ttf",
         "/Library/Fonts/Arial Unicode.ttf",
+        "/System/Library/Fonts/Supplemental/Arial.ttf",
         "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
         "/usr/share/fonts/truetype/noto/NotoSans-Regular.ttf",
         "/usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf",
         "/usr/share/fonts/truetype/freefont/FreeSans.ttf",
     ]
     bold_candidates = [
+        str(bundled_arial_bold),
+        str(bundled_unicode),
+        str(bundled_arial),
         "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
-        "/System/Library/Fonts/Supplemental/Arial.ttf",
         "/System/Library/Fonts/Supplemental/Arial Unicode.ttf",
         "/Library/Fonts/Arial Unicode.ttf",
+        "/System/Library/Fonts/Supplemental/Arial.ttf",
         "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
         "/usr/share/fonts/truetype/noto/NotoSans-Bold.ttf",
         "/usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf",
@@ -81,7 +94,7 @@ def configure_fonts():
     ]
 
     regular_path = next((p for p in regular_candidates if Path(p).exists()), None)
-    bold_path = next((p for p in bold_candidates if Path(p).exists()), None)
+    bold_path = next((p for p in bold_candidates if Path(p).exists()), regular_path)
 
     if not regular_path or not bold_path:
         return
