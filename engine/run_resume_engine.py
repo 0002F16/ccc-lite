@@ -1552,23 +1552,40 @@ def main():
         layout_audit_path = run_dir / "layout_audit.json"
         layout_audit_data = None
         if LAYOUT_AUDIT_SCRIPT.exists():
-            subprocess.run(
-                [
-                    "python3",
-                    str(LAYOUT_AUDIT_SCRIPT),
-                    str(pdf_path),
-                    "--resume-json",
-                    str(resume_json_path),
-                    "--output",
-                    str(layout_audit_path),
-                    "--page-budget",
-                    str(plan["page_budget"]),
-                ],
-                check=True,
-                text=True,
-                capture_output=True,
-            )
-            layout_audit_data = load_json(layout_audit_path)
+            layout_cmd = [
+                sys.executable,
+                str(LAYOUT_AUDIT_SCRIPT),
+                str(pdf_path),
+                "--resume-json",
+                str(resume_json_path),
+                "--output",
+                str(layout_audit_path),
+                "--page-budget",
+                str(plan["page_budget"]),
+            ]
+            try:
+                layout_result = subprocess.run(
+                    layout_cmd,
+                    check=True,
+                    text=True,
+                    capture_output=True,
+                )
+                if layout_result.stdout:
+                    (run_dir / "layout_audit.stdout.txt").write_text(layout_result.stdout, encoding="utf-8")
+                if layout_result.stderr:
+                    (run_dir / "layout_audit.stderr.txt").write_text(layout_result.stderr, encoding="utf-8")
+                if layout_audit_path.exists():
+                    layout_audit_data = load_json(layout_audit_path)
+            except subprocess.CalledProcessError as layout_error:
+                error_parts = [
+                    f"command: {' '.join(layout_cmd)}",
+                    f"exit_code: {layout_error.returncode}",
+                ]
+                if layout_error.stdout:
+                    error_parts.append("stdout:\n" + layout_error.stdout)
+                if layout_error.stderr:
+                    error_parts.append("stderr:\n" + layout_error.stderr)
+                (run_dir / "layout_audit.error.txt").write_text("\n\n".join(error_parts) + "\n", encoding="utf-8")
         rules_audit = build_audit_report(normalized, profile, job, plan, enforcement_audit, layout_audit_data)
         rules_audit_path = run_dir / "rules_audit.json"
         rules_audit_path.write_text(json.dumps(rules_audit, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

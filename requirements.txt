@@ -1,2 +1,4 @@
 reportlab
 certifi
+Pillow
+PyPDF2
