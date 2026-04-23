@@ -4,7 +4,7 @@ A lightweight, self-contained fork of the CCC resume studio.
 
 ## What it does
 
-- ships with bundled client schemas for Ganbar and Anastasiya
+- ships with bundled client schemas for Ganbar, Anastasiya, Beste, Nikul, Amandeep, and Narmina
 - uses its own local engine copy, rules, and renderer
 - lets you pick a client, paste a job/company/role, and generate one resume
 - shows the active provider from `.env`
@@ -26,6 +26,9 @@ The app generates into a temporary directory and keeps only the **current run** 
 - `data/clients/ganbar-shabanov/master_profile.json`
 - `data/clients/anastasiya-karaneuskaya/master_profile.json`
 - `data/clients/beste-keskiner/master_profile.json`
+- `data/clients/nikul-padamani/master_profile.json`
+- `data/clients/amandeep-kaur/master_profile.json`
+- `data/clients/narmina-ibrahimova/master_profile.json`
 
 ## Self-contained engine assets
 
@@ -54,6 +57,9 @@ The bundled clients should appear as:
 - Ganbar Shabanov
 - Anastasiya Karaneuskaya
 - Beste Keskiner
+- Nikul Padamani
+- Amandeep Kaur
+- Narmina Ibrahimova
 
 ## Provider fallback
 

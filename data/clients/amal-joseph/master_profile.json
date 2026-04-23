@@ -1,0 +1,137 @@
+{
+  "client": {
+    "name": "Amal Joseph",
+    "email": "amaljo2000@gmail.com",
+    "phone": "+48 537 792 080",
+    "city": "Warsaw",
+    "country": "Poland",
+    "linkedin": "",
+    "label": "Junior accountant and finance operations candidate",
+    "work_authorization": "Source says: Authorised to work in Poland (TRC) — verify current student / TRC status before final use"
+  },
+  "core_positioning": {
+    "level": "junior",
+    "strategy": "Transferable Value",
+    "notes": "Best fit is Junior Accountant, Accounts Payable, Accounts Receivable, Record-to-Report, reconciliation, finance operations, and analyst-track SSC / GBS roles in English-speaking environments in Warsaw. Secondary fit includes junior audit, assurance support, internal audit, compliance, and banking-operations roles where his MSc Finance (Audit & Control) and strong academic record can compensate for limited work experience. Avoid positioning him for tool-screened roles requiring strong SAP, Power BI, SQL, or Polish-language fluency until further verified evidence exists. Work authorization should be checked carefully before application because the source material contains both TRC wording and separate notes about pending-status constraints."
+  },
+  "summary_base": [
+    "Junior accountant and finance graduate with around 1.5 years of experience across bookkeeping, journal entries, account reconciliation, AP/AR support, statutory filing, payroll support, and month-end close in an international education-services company in India.",
+    "Strongest evidence includes maintaining on-time statutory filing across GST, TDS, and PF deadlines, supporting daily transaction posting and ledger updates, and building finance operations credibility alongside an MSc in Finance (Audit & Control) completed in Warsaw with a 4.24/5.0 GPA.",
+    "Best positioned for Junior Accountant, finance operations, SSC / GBS accounting, reconciliation, audit-support, and analyst-track roles where accuracy, compliance discipline, and English fluency matter more than deep local-market experience."
+  ],
+  "experience": [
+    {
+      "company": "Santa Monica Study Abroad Pvt Ltd",
+      "position": "Junior Accountant",
+      "location": "Kochi, India",
+      "startDate": "2022-07",
+      "endDate": "2023-08",
+      "summary": "Accounting role in an international education-services company supporting bookkeeping, AP/AR, reconciliations, statutory compliance, payroll support, and close-cycle activities.",
+      "highlights": [
+        "**Recorded and posted 50+ daily financial transactions (est.)** including journal entries, ledger updates, and account classifications across multi-department operations, maintaining zero posting backlog according to source claims.",
+        "**Supported month-end and year-end close across 3–5 departmental cost centres (est.)** and delivered reconciled financial information for senior management review on schedule according to source wording.",
+        "**Processed AP/AR workflows for 40+ vendors and clients (est.)** while tracking outstanding balances and supporting timely collection follow-up across the portfolio.",
+        "**Maintained on-time statutory filing across GST, TDS, and PF deadlines (est.)** through documentation preparation and compliance tracking; zero-penalty wording should be verified before final-facing use.",
+        "**Supported payroll processing and reimbursements for 50+ employees (est.)** and coordinated documentation for internal review and external statutory audit activity."
+      ]
+    },
+    {
+      "company": "Santa Monica Study Abroad Pvt Ltd",
+      "position": "Finance Intern",
+      "location": "Kochi, India",
+      "startDate": "2022-03",
+      "endDate": "2022-06",
+      "summary": "Internship supporting financial statement preparation, ledger reconciliation, audit documentation, reporting support, and ERP-based finance operations.",
+      "highlights": [
+        "**Prepared financial statements and ledger reconciliations** supporting monthly and quarterly reporting cycles under senior-accountant supervision.",
+        "**Compiled audit documentation across departmental cost centres (est.)** contributing to budget tracking, expense monitoring, and variance-analysis support for management review.",
+        "**Built working proficiency in SAP ERP and Excel** for data entry, invoice processing, and reconciliation workflows that became part of the subsequent full-time role."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "WSGE",
+      "area": "Business Administration",
+      "studyType": "MBA",
+      "startDate": "2026",
+      "endDate": "2028",
+      "location": "Warsaw, Poland"
+    },
+    {
+      "institution": "Vizja University",
+      "area": "Finance (Audit & Control)",
+      "studyType": "Master of Finance",
+      "startDate": "2023-10",
+      "endDate": "2025-10",
+      "location": "Warsaw, Poland",
+      "score": "GPA 4.24/5.0"
+    },
+    {
+      "institution": "Kannur University",
+      "area": "Finance & Accounting",
+      "studyType": "BSc",
+      "startDate": "2019-06",
+      "endDate": "2022-04",
+      "location": "Kannur, India"
+    }
+  ],
+  "skills": {
+    "Accounting & Finance": [
+      "Financial Reporting",
+      "Account Reconciliation",
+      "Month-End Close",
+      "Year-End Close",
+      "Accounts Payable",
+      "Accounts Receivable",
+      "Journal Entries",
+      "Ledger Maintenance",
+      "Statutory Compliance",
+      "GST",
+      "TDS",
+      "PF",
+      "Payroll Processing",
+      "Audit Support",
+      "Variance Analysis",
+      "Budget Tracking",
+      "Internal Controls"
+    ],
+    "Operations & Analysis": [
+      "Finance Operations",
+      "Bookkeeping",
+      "Transaction Processing",
+      "Documentation Preparation",
+      "Deadline Tracking",
+      "Reporting Support",
+      "Cost Centre Support"
+    ],
+    "Tools": [
+      "Microsoft Excel",
+      "PivotTables",
+      "VLOOKUP",
+      "Macros",
+      "SAP ERP (Basic)",
+      "Peachtree (Advanced)",
+      "Tally Prime (Advanced)",
+      "Microsoft Office"
+    ],
+    "Certifications": [
+      "Tally Prime (Sree Sankarachaya, 2023)",
+      "Peachtree Accounting (Sree Sankarachaya, 2023)"
+    ]
+  },
+  "languages": [
+    {
+      "language": "Malayalam",
+      "level": "Native"
+    },
+    {
+      "language": "English",
+      "level": "C2"
+    },
+    {
+      "language": "Polish",
+      "level": "A1"
+    }
+  ]
+}
