@@ -5,6 +5,7 @@ This folder contains a small resume-generation app.
 ## What this app does
 
 It lets you:
+- log into a private internal workspace
 - choose a client profile
 - paste a job description
 - generate a tailored resume PDF
@@ -64,6 +65,24 @@ GEMINI_MODEL=gemini-2.5-flash
 
 Save the file.
 
+### Step 3.5 — Set the login passwords
+This app does **not** allow account sign-up in the browser.
+
+Someone setting up the app needs to create passwords for the built-in accounts:
+- `admin`
+- `brian`
+- `guarang`
+
+Run these in Terminal from this folder:
+
+```bash
+NEW_PASSWORD='choose-a-password' npm run set-password -- admin
+NEW_PASSWORD='choose-a-password' npm run set-password -- brian
+NEW_PASSWORD='choose-a-password' npm run set-password -- guarang
+```
+
+You only need to do this once unless you want to change a password later.
+
 ### Step 4 — Start the app
 Double-click:
 - `START.command`
@@ -76,6 +95,8 @@ It should:
 The app runs at:
 - http://localhost:4311
 
+Then log in with one of the internal accounts above.
+
 ---
 
 ## If double-click does not work
@@ -86,6 +107,7 @@ Open Terminal, drag this folder into it, then run:
 cd /path/to/ccc-resume-studio-lite
 python3 -m pip install -r requirements.txt
 npm install
+NEW_PASSWORD='choose-a-password' npm run set-password -- admin
 node server.js
 ```
 
@@ -129,6 +151,12 @@ Usually one of these is missing:
 - API key
 - Python dependency
 - internet access for the AI provider
+
+### “Invalid username or password”
+Reset that user with:
+```bash
+NEW_PASSWORD='new-password' npm run set-password -- admin
+```
 
 ---
 

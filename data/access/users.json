@@ -1,0 +1,27 @@
+{
+  "users": [
+    {
+      "username": "admin",
+      "displayName": "Admin",
+      "role": "admin",
+      "scope": "all-clients",
+      "clientIds": []
+    },
+    {
+      "username": "brian",
+      "displayName": "Brian",
+      "role": "advisor",
+      "scope": "selected-clients",
+      "clientIds": [],
+      "placeholderMessage": "No client profiles are assigned to brian yet. Add future client ids in data/access/users.json when Brian's workspace is ready."
+    },
+    {
+      "username": "guarang",
+      "displayName": "Guarang",
+      "role": "advisor",
+      "scope": "selected-clients",
+      "clientIds": [],
+      "placeholderMessage": "No client profiles are assigned to guarang yet. Add future client ids in data/access/users.json when Guarang's workspace is ready."
+    }
+  ]
+}

@@ -5,7 +5,8 @@
   "description": "Simple UI wrapper for the CCC resume engine experiment",
   "scripts": {
     "dev": "node --watch server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "set-password": "node scripts/set-password.js"
   },
   "dependencies": {
     "express": "^4.21.2"

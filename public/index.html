@@ -9,15 +9,31 @@
   <body>
     <div class="app-shell">
       <aside class="sidebar">
-        <div>
-          <div class="eyebrow">CCC Resume Studio Lite</div>
-          <h1>Generate a resume fast</h1>
-          <p class="muted">No run history, no stored jobs, no ledger. Pick a client, paste the JD, generate the current resume.</p>
+        <div class="sidebar-top">
+          <div>
+            <div class="eyebrow">CCC Resume Studio Lite</div>
+            <h1>Resume workspace</h1>
+            <p class="muted">Pick a profile. Paste the role. Generate.</p>
+          </div>
+
+          <div class="account-card">
+            <div>
+              <div class="provider-status-label">Account</div>
+              <div id="current-user" class="account-name">Loading…</div>
+              <div id="current-access" class="muted account-access">Checking access…</div>
+            </div>
+            <button id="logout-button" class="button ghost small-button" type="button">Sign out</button>
+          </div>
+        </div>
+
+        <div id="no-clients-card" class="sidebar-card empty-state-card hidden">
+          <div class="card-title">Access</div>
+          <div id="no-clients-message" class="muted">No profiles assigned.</div>
         </div>
 
         <form id="generate-form" class="form-stack">
           <label>
-            <span>Client</span>
+            <span>Profile</span>
             <select id="client-select" name="clientName" required></select>
           </label>
 
@@ -27,42 +43,42 @@
           </label>
 
           <label>
-            <span>Position</span>
+            <span>Role</span>
             <input id="position-input" name="position" type="text" placeholder="Junior FP&A Analyst" required />
           </label>
 
           <label>
-            <span>Job description</span>
-            <textarea id="jd-input" name="jdText" rows="16" placeholder="Paste the full JD here..." required></textarea>
+            <span>Brief</span>
+            <textarea id="jd-input" name="jdText" rows="16" placeholder="Paste the brief here..." required></textarea>
           </label>
 
           <div class="provider-status-card">
             <div>
-              <div class="provider-status-label">Active model provider</div>
+              <div class="provider-status-label">Model</div>
               <div id="provider-indicator" class="provider-indicator provider-loading">Checking…</div>
             </div>
             <div id="provider-model" class="provider-model muted">Loading model…</div>
           </div>
 
-          <button id="generate-button" type="submit">Generate resume</button>
+          <button id="generate-button" type="submit">Generate</button>
         </form>
 
         <div class="sidebar-card">
-          <div class="card-title">Run status</div>
-          <pre id="status-box">Loading clients…</pre>
+          <div class="card-title">Status</div>
+          <pre id="status-box">Loading…</pre>
         </div>
       </aside>
 
       <main class="main-pane">
         <section class="preview-toolbar">
           <div>
-            <div class="eyebrow">Current preview</div>
-            <h2 id="preview-title">No run yet</h2>
-            <p id="preview-subtitle" class="muted">Generate a run from the left panel. Only the current in-memory run is kept while the server is alive.</p>
+            <div class="eyebrow">Preview</div>
+            <h2 id="preview-title">Nothing yet</h2>
+            <p id="preview-subtitle" class="muted">Your latest draft appears here.</p>
           </div>
           <div class="toolbar-actions">
-            <a id="open-pdf-link" class="button ghost disabled" href="#" target="_blank" rel="noreferrer">Open PDF</a>
-            <a id="download-pdf-link" class="button disabled" href="#" download>Export PDF</a>
+            <a id="open-pdf-link" class="button ghost disabled" href="#" target="_blank" rel="noreferrer">Open</a>
+            <a id="download-pdf-link" class="button disabled" href="#" download>Download</a>
           </div>
         </section>
 
@@ -74,17 +90,17 @@
           <div class="details-panel">
             <div class="detail-card">
               <div class="card-title">Summary</div>
-              <div id="summary-output" class="rich-text muted">Nothing generated yet.</div>
+              <div id="summary-output" class="rich-text muted">Summary appears here.</div>
             </div>
 
             <div class="detail-card">
               <div class="card-title">Skills</div>
-              <div id="skills-output" class="skills-list muted">Nothing generated yet.</div>
+              <div id="skills-output" class="skills-list muted">Skills appear here.</div>
             </div>
 
             <div class="detail-card">
-              <div class="card-title">Audits</div>
-              <div id="audit-output" class="audit-list muted">No audit output yet.</div>
+              <div class="card-title">Checks</div>
+              <div id="audit-output" class="audit-list muted">Checks appear here.</div>
             </div>
           </div>
         </section>

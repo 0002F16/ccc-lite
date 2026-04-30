@@ -15,8 +15,14 @@ const downloadPdfLink = document.getElementById('download-pdf-link');
 const summaryOutput = document.getElementById('summary-output');
 const skillsOutput = document.getElementById('skills-output');
 const auditOutput = document.getElementById('audit-output');
+const currentUser = document.getElementById('current-user');
+const currentAccess = document.getElementById('current-access');
+const logoutButton = document.getElementById('logout-button');
+const noClientsCard = document.getElementById('no-clients-card');
+const noClientsMessage = document.getElementById('no-clients-message');
 
 let cachedClients = [];
+let authUser = null;
 
 function setStatus(text) {
   statusBox.textContent = text;
@@ -116,7 +122,7 @@ function renderAudit(run) {
 
 function applyRunToPreview(run) {
   previewTitle.textContent = `${run.metadata.company} — ${run.metadata.position}`;
-  previewSubtitle.textContent = `${run.metadata.client_name} • current in-memory run`;
+  previewSubtitle.textContent = `${run.metadata.client_name} • latest draft`;
   summaryOutput.innerHTML = run.resume.summary || '<span class="muted">No summary returned.</span>';
   renderSkills(run.resume.skills);
   renderAudit(run);
@@ -125,41 +131,122 @@ function applyRunToPreview(run) {
   const filename = `${run.metadata.client_name}_${run.metadata.position}_Resume.pdf`.replace(/\s+/g, '_');
   enableExport(run.pdfUrl, run.downloadPdfUrl, filename, cacheToken);
   setStatus([
-    'Generated current run.',
-    `Client: ${run.metadata.client_name}`,
-    `Position: ${run.metadata.position}`,
-    `Provider: ${run.metadata.llm_provider || 'unknown'}`,
-    `Page budget: ${run.metadata.page_budget}`,
-    'Persistence: temp-only while server is running'
+    'Done.',
+    `Profile: ${run.metadata.client_name}`,
+    `Role: ${run.metadata.position}`,
+    `Model: ${run.metadata.llm_provider || 'unknown'}`,
+    `Pages: ${run.metadata.page_budget}`,
+    'Storage: session only',
   ].join('\n'));
 }
 
-async function loadProviderStatus() {
-  const response = await fetch('/api/provider');
+function clearPreview(message = 'Nothing yet.') {
+  previewTitle.textContent = 'Nothing yet';
+  previewSubtitle.textContent = 'Your latest draft appears here.';
+  summaryOutput.textContent = message;
+  skillsOutput.innerHTML = '<div class="muted">Nothing generated yet.</div>';
+  auditOutput.innerHTML = '<div class="muted">No audit output yet.</div>';
+  pdfFrame.src = 'about:blank';
+  disableExport();
+}
+
+function setFormEnabled(enabled) {
+  clientSelect.disabled = !enabled;
+  companyInput.disabled = !enabled;
+  positionInput.disabled = !enabled;
+  jdInput.disabled = !enabled;
+  generateButton.disabled = !enabled;
+}
+
+function describeAccess(user) {
+  if (!user) return '';
+  if (user.access.allClients) {
+    return 'All profiles';
+  }
+  if (user.access.hasAssignedClients) {
+    return `${user.access.assignedCount} profile${user.access.assignedCount === 1 ? '' : 's'}`;
+  }
+  return 'No profiles';
+}
+
+function renderUser(user) {
+  authUser = user;
+  currentUser.textContent = user.displayName;
+  currentAccess.textContent = describeAccess(user);
+}
+
+function handleUnauthorized(response) {
+  if (response.status === 401) {
+    window.location.assign('/login');
+    return true;
+  }
+  return false;
+}
+
+async function fetchJson(url, options) {
+  const response = await fetch(url, options);
+  if (handleUnauthorized(response)) {
+    throw new Error('Authentication required.');
+  }
   const data = await response.json();
   if (!response.ok) {
-    throw new Error(data.error || 'Failed to load provider status');
+    throw new Error(data.error || 'Request failed.');
   }
+  return data;
+}
+
+async function loadCurrentUser() {
+  const data = await fetchJson('/api/auth/me');
+  renderUser(data.user);
+}
+
+async function loadProviderStatus() {
+  const data = await fetchJson('/api/provider');
   setProviderIndicator(data.provider, data.model, data.configured);
 }
 
-async function loadClients() {
-  const response = await fetch('/api/clients');
-  const data = await response.json();
-  cachedClients = data.clients || [];
+function renderClientList(clients, access) {
+  cachedClients = clients || [];
+
+  if (!cachedClients.length) {
+    clientSelect.innerHTML = '<option value="">No assigned clients yet</option>';
+    noClientsMessage.textContent = access.placeholderMessage || 'No profiles assigned.';
+    noClientsCard.classList.remove('hidden');
+    setFormEnabled(false);
+    clearPreview('A draft appears here once a profile is assigned.');
+    setStatus('No profiles assigned.');
+    return;
+  }
+
+  noClientsCard.classList.add('hidden');
   clientSelect.innerHTML = cachedClients
     .map((client) => `<option value="${client.name}">${client.name} (${client.source})</option>`)
     .join('');
+  setFormEnabled(true);
+}
+
+async function loadClients() {
+  const data = await fetchJson('/api/clients');
+  renderClientList(data.clients || [], {
+    placeholderMessage: data.access?.placeholderMessage,
+  });
 }
 
 async function initialize() {
-  setStatus('Loading clients and provider status…');
+  setStatus('Loading…');
   disableExport();
+  clearPreview();
+
   try {
+    await loadCurrentUser();
     await Promise.all([loadClients(), loadProviderStatus()]);
-    setStatus(`Ready. ${cachedClients.length} clients loaded. This lite app keeps only the current run in memory.`);
+    if (cachedClients.length) {
+      setStatus(`Ready. ${cachedClients.length} profile${cachedClients.length === 1 ? '' : 's'}.`);
+    }
   } catch (error) {
-    setStatus(`Failed to initialize.\n${error.message}`);
+    if (error.message !== 'Authentication required.') {
+      setStatus(`Could not load.\n${error.message}`);
+    }
   }
 }
 
@@ -168,7 +255,7 @@ async function handleGenerate(event) {
   disableExport();
   generateButton.disabled = true;
   generateButton.textContent = 'Generating…';
-  setStatus(`Generating resume with ${providerModel.textContent || 'configured model'}…\nThis can take a minute or two.`);
+  setStatus('Generating…');
   previewTitle.textContent = 'Generating…';
   previewSubtitle.textContent = `${clientSelect.value} → ${positionInput.value || 'Untitled role'}`;
   pdfFrame.src = 'about:blank';
@@ -177,34 +264,45 @@ async function handleGenerate(event) {
     clientName: clientSelect.value,
     company: companyInput.value.trim(),
     position: positionInput.value.trim(),
-    jdText: jdInput.value.trim()
+    jdText: jdInput.value.trim(),
   };
 
   try {
-    const response = await fetch('/api/generate', {
+    const data = await fetchJson('/api/generate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
     });
-
-    const data = await response.json();
-    if (!response.ok) {
-      throw new Error(data.error || 'Generation failed');
-    }
 
     applyRunToPreview(data.run);
   } catch (error) {
-    previewTitle.textContent = 'Generation failed';
-    previewSubtitle.textContent = 'See run status for details.';
-    summaryOutput.textContent = 'No preview available.';
+    if (error.message === 'Authentication required.') return;
+    previewTitle.textContent = 'Failed';
+    previewSubtitle.textContent = 'See status.';
+    summaryOutput.textContent = 'Nothing to show yet.';
     skillsOutput.innerHTML = '<div class="muted">No skills output yet.</div>';
     auditOutput.innerHTML = `<div class="audit-pill danger">${error.message}</div>`;
-    setStatus(`Generation failed.\n${error.message}`);
+    setStatus(`Failed.\n${error.message}`);
   } finally {
-    generateButton.disabled = false;
+    generateButton.disabled = !cachedClients.length;
     generateButton.textContent = 'Generate resume';
   }
 }
 
+async function handleLogout() {
+  logoutButton.disabled = true;
+  try {
+    await fetchJson('/api/auth/logout', { method: 'POST' });
+  } catch (error) {
+    if (error.message !== 'Authentication required.') {
+      setStatus(`Sign out failed.\n${error.message}`);
+      logoutButton.disabled = false;
+      return;
+    }
+  }
+  window.location.assign('/login');
+}
+
 form.addEventListener('submit', handleGenerate);
+logoutButton.addEventListener('click', handleLogout);
 initialize();
