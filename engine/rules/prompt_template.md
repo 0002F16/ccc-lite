@@ -15,12 +15,14 @@ Binding rules to obey:
 - Use the exact target job title from the JD in summary sentence 1.
 - Put the exact target job title in HTML <b> tags in summary sentence 1.
 - Bold the strongest proof point or metric in the summary.
-- Summary must be 2–4 sentences.
-- Summary sentence structure:
+- Summary must render as exactly 4 lines.
+- Write the summary as exactly 4 concise sentences/lines.
+- Keep each summary line tight enough to fit on one resume line in the CCC renderer; prefer short recruiter-scan phrasing over long flowing sentences.
+- Summary line structure:
   1) exact target title + years/context
   2) strongest metric/achievement
   3) exact JD terminology for 3–4 key hard skills
-  4) where the value lands, only if space supports it
+  4) where the value lands / target environment
 - Summary quality standard:
   - Make the summary sound like a recruiter-ready positioning statement, not a generic professional profile.
   - Use the build plan's `summary_base`, `summary_evidence_pack`, `client_label`, and `transferable_bridge` to write in context.

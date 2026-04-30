@@ -1165,6 +1165,64 @@ def enforce_page_rules(normalized: dict, profile: dict, job: dict, plan: dict) -
     return data, audit
 
 
+def split_summary_sentences(summary: str) -> list[str]:
+    text = re.sub(r"<br\s*/?>", " ", str(summary or ""), flags=re.I)
+    text = re.sub(r"\s+", " ", text).strip()
+    if not text:
+        return []
+    parts = [p.strip() for p in re.split(r"(?<=[.!?])\s+", text) if p.strip()]
+    return parts or [text]
+
+
+def split_line_soft(text: str) -> list[str]:
+    text = re.sub(r"\s+", " ", str(text or "")).strip()
+    if not text:
+        return []
+    for marker in [", and ", " and ", "; ", ", ", " with ", " for ", " across "]:
+        if marker in text:
+            left, right = text.split(marker, 1)
+            left = left.strip()
+            right = right.strip()
+            if left and right:
+                if not left.endswith(('.', '!', '?')):
+                    left = f"{left}."
+                return [left, right]
+    words = text.split()
+    if len(words) >= 8:
+        mid = len(words) // 2
+        left = " ".join(words[:mid]).strip()
+        right = " ".join(words[mid:]).strip()
+        if left and right:
+            if not left.endswith(('.', '!', '?')):
+                left = f"{left}."
+            return [left, right]
+    return [text]
+
+
+def enforce_four_line_summary(summary: str) -> str:
+    lines = split_summary_sentences(summary)
+    if not lines:
+        return ""
+
+    while len(lines) < 4:
+        longest_idx = max(range(len(lines)), key=lambda i: len(re.sub(r"<[^>]+>", "", lines[i])))
+        split_lines = split_line_soft(lines[longest_idx])
+        if len(split_lines) == 1:
+            break
+        lines = lines[:longest_idx] + split_lines + lines[longest_idx + 1:]
+
+    if len(lines) > 4:
+        lines = lines[:3] + [" ".join(lines[3:]).strip()]
+
+    cleaned = []
+    for line in lines[:4]:
+        line = re.sub(r"\s+", " ", line).strip()
+        if line:
+            cleaned.append(line)
+
+    return "<br/>".join(cleaned[:4])
+
+
 def normalize_resume_payload(data: dict, profile: dict) -> dict:
     required = ["name", "city", "phone", "email", "linkedin", "summary", "experience", "education", "skills"]
     missing = [k for k in required if k not in data]
@@ -1180,6 +1238,7 @@ def normalize_resume_payload(data: dict, profile: dict) -> dict:
 
     normalized = dict(data)
     normalized["linkedin"] = str(normalized["linkedin"]).replace("https://", "").replace("http://", "")
+    normalized["summary"] = enforce_four_line_summary(normalized.get("summary", ""))
 
     profile_experience = profile.get("experience", []) or []
     normalized_experience = []

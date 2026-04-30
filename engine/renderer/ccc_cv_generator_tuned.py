@@ -256,7 +256,8 @@ def render_header(story, styles, data):
 
 def render_summary(story, styles, data, compact=True):
     section_header(story, styles, "Professional Summary", compact=compact)
-    story.append(Paragraph(data["summary"], styles["summary"]))
+    summary = str(data.get("summary", "")).replace("\n", "<br/>")
+    story.append(Paragraph(summary, styles["summary"]))
     story.append(Spacer(1, 1))
 
 

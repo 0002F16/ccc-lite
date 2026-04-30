@@ -59,7 +59,7 @@
     ]
   },
   "summary_rules": {
-    "sentences": "2-4",
+    "sentences": "exactly 4 concise lines/sentences",
     "requirements": [
       "Use the exact target job title in summary sentence 1",
       "Bold the target role title with HTML <b> tags",
@@ -67,7 +67,8 @@
       "Use exact JD wording where natural",
       "No first-person pronouns",
       "No generic openers",
-      "Sentence 3 should foreground exact JD terminology for key hard skills"
+      "Sentence 3 should foreground exact JD terminology for key hard skills",
+      "Summary must render as exactly 4 lines in the final output"
     ]
   },
   "experience_rules": {
