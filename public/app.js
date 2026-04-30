@@ -11,6 +11,9 @@ const statusBox = document.getElementById('status-box');
 const previewTitle = document.getElementById('preview-title');
 const previewSubtitle = document.getElementById('preview-subtitle');
 const pdfFrame = document.getElementById('pdf-frame');
+const previewLoading = document.getElementById('preview-loading');
+const previewLoadingTitle = document.getElementById('preview-loading-title');
+const previewLoadingText = document.getElementById('preview-loading-text');
 const openPdfLink = document.getElementById('open-pdf-link');
 const downloadPdfLink = document.getElementById('download-pdf-link');
 const summaryOutput = document.getElementById('summary-output');
@@ -27,6 +30,16 @@ let authUser = null;
 
 function setStatus(text) {
   statusBox.textContent = text;
+}
+
+function setPreviewLoading(visible, title = 'Loading preview…', text = 'Your PDF will appear here in a moment.') {
+  if (visible) {
+    previewLoadingTitle.textContent = title;
+    previewLoadingText.textContent = text;
+    previewLoading.classList.remove('hidden');
+    return;
+  }
+  previewLoading.classList.add('hidden');
 }
 
 function appendCacheBust(url, token) {
@@ -128,6 +141,7 @@ function applyRunToPreview(run) {
   renderSkills(run.resume.skills);
   renderAudit(run);
   const cacheToken = run.runId || Date.now();
+  setPreviewLoading(true, 'Loading PDF…', 'The resume is ready. Rendering the preview now.');
   pdfFrame.src = `${appendCacheBust(run.pdfUrl, cacheToken)}#toolbar=0&navpanes=0&scrollbar=1`;
   const filename = `${run.metadata.client_name}_${run.metadata.position}_Resume.pdf`.replace(/\s+/g, '_');
   enableExport(run.pdfUrl, run.downloadPdfUrl, filename, cacheToken);
@@ -148,6 +162,7 @@ function clearPreview(message = 'Nothing yet.') {
   skillsOutput.innerHTML = '<div class="muted">Nothing generated yet.</div>';
   auditOutput.innerHTML = '<div class="muted">No audit output yet.</div>';
   pdfFrame.src = 'about:blank';
+  setPreviewLoading(false);
   disableExport();
 }
 
@@ -260,6 +275,7 @@ async function handleGenerate(event) {
   setStatus('Generating…');
   previewTitle.textContent = 'Generating…';
   previewSubtitle.textContent = `${clientSelect.value} → ${positionInput.value || 'Untitled role'}`;
+  setPreviewLoading(true, 'Generating resume…', 'Writing the draft and preparing the PDF preview.');
   pdfFrame.src = 'about:blank';
 
   const payload = {
@@ -285,6 +301,7 @@ async function handleGenerate(event) {
     summaryOutput.textContent = 'Nothing to show yet.';
     skillsOutput.innerHTML = '<div class="muted">No skills output yet.</div>';
     auditOutput.innerHTML = `<div class="audit-pill danger">${error.message}</div>`;
+    setPreviewLoading(false);
     setStatus(`Failed.\n${error.message}`);
   } finally {
     generateButton.disabled = !cachedClients.length;
@@ -305,6 +322,12 @@ async function handleLogout() {
   }
   window.location.assign('/login');
 }
+
+pdfFrame.addEventListener('load', () => {
+  if (pdfFrame.src && pdfFrame.src !== 'about:blank') {
+    setPreviewLoading(false);
+  }
+});
 
 form.addEventListener('submit', handleGenerate);
 logoutButton.addEventListener('click', handleLogout);

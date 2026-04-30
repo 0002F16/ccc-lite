@@ -89,6 +89,13 @@
 
         <section class="content-grid">
           <div class="preview-panel">
+            <div id="preview-loading" class="preview-loading hidden" aria-live="polite">
+              <div class="preview-loading-spinner" aria-hidden="true"></div>
+              <div class="preview-loading-copy">
+                <div id="preview-loading-title" class="preview-loading-title">Loading preview…</div>
+                <div id="preview-loading-text" class="preview-loading-text">Your PDF will appear here in a moment.</div>
+              </div>
+            </div>
             <iframe id="pdf-frame" title="Resume preview"></iframe>
           </div>
 
