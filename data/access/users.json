@@ -16,12 +16,15 @@
       "placeholderMessage": "No client profiles are assigned to brian yet. Add future client ids in data/access/users.json when Brian's workspace is ready."
     },
     {
-      "username": "guarang",
-      "displayName": "Guarang",
+      "username": "gaurang",
+      "displayName": "Gaurang",
       "role": "advisor",
       "scope": "selected-clients",
-      "clientIds": [],
-      "placeholderMessage": "No client profiles are assigned to guarang yet. Add future client ids in data/access/users.json when Guarang's workspace is ready."
+      "clientIds": [
+        "gaurang-gohil-compliance-risk-controls",
+        "gaurang-gohil-learning-operations-compliance-training"
+      ],
+      "placeholderMessage": "No client profiles are assigned to gaurang yet."
     }
   ]
 }
