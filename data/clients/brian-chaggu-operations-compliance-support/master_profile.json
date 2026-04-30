@@ -1,0 +1,122 @@
+{
+  "client": {
+    "name": "Brian Chaggu - Operations Compliance Support",
+    "email": "brianchaggu2019@gmail.com",
+    "phone": "+48 729 347 260",
+    "city": "Lublin",
+    "country": "Poland",
+    "linkedin": "https://www.linkedin.com/in/brian-chaggu-ph-d-985572277/",
+    "label": "Operations support, training and quality specialist with payments-support, compliance, SLA, and case-management experience",
+    "work_authorization": "Work authorization status to be confirmed"
+  },
+  "core_positioning": {
+    "level": "mid",
+    "strategy": "Transferable Value",
+    "notes": "This profile is for operations support, payments support, training and quality, risk/compliance support, customer operations, and SLA-driven service roles. Best-fit targets include Operations Support Specialist, Quality Analyst, Compliance Support, Risk Operations, Payments Operations, and CRM-driven case-management roles. Keep this separate from Brian's research/international-relations profile so the AI does not blend academic policy work into recruiter-facing operations applications."
+  },
+  "summary_base": [
+    "Operations support and training/quality specialist with 4+ years of experience across payments support, regulatory-compliance support, SLA management, escalation handling, and multi-system case resolution in Poland.",
+    "Strongest evidence includes handling 80-120+ client cases daily with 98-100% SLA adherence, reducing repeat escalations by about 20% through root-cause analysis, and sustaining 99%+ data-accuracy standards in booking and payment workflows.",
+    "Best positioned for operations support, quality/compliance support, risk operations, CRM-driven case management, and service-delivery roles where structured execution, accuracy, and escalation control matter."
+  ],
+  "experience": [
+    {
+      "company": "Talixo Poland",
+      "position": "Operations Support Specialist",
+      "location": "Kraków, Poland",
+      "startDate": "2021-09",
+      "endDate": "2026-01",
+      "summary": "Operations support role covering booking modifications, payment discrepancies, validation, reconciliation, and cross-functional escalation handling in a high-volume service environment.",
+      "highlights": [
+        "**Managed 80-120+ client cases daily** across booking modifications and payment discrepancies while maintaining 98-100% SLA adherence.",
+        "**Delivered 99%+ data accuracy and zero-defect processing** through end-to-end validation, reconciliation, and structured case handling.",
+        "**Reduced repeat escalations by around 20%** by investigating account and payment irregularities through multi-system data analysis and root-cause identification.",
+        "**Resolved high-priority cases with cross-functional teams** across Operations, Compliance, and Partner functions inside defined service timelines."
+      ]
+    },
+    {
+      "company": "Talixo Poland",
+      "position": "Training and Quality Specialist",
+      "location": "Kraków, Poland",
+      "startDate": "2023-11",
+      "endDate": "2024-02",
+      "summary": "Quality and compliance-focused role covering audit checks, trend analysis, escalation handling, and SLA/KPI monitoring within the same operating environment.",
+      "highlights": [
+        "**Conducted 50+ monthly quality and compliance audits** and sustained 99% adherence to internal controls and regulatory standards.",
+        "**Identified control gaps through trend analysis** and implemented process improvements that reduced rework by 15-25%.",
+        "**Handled complex escalations with structured root-cause analysis** and corrective-action planning to reduce repeat issues.",
+        "**Monitored SLA performance and quality KPIs** through reporting dashboards that improved on-time resolution visibility."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Maria Curie-Skłodowska University",
+      "area": "International Relations",
+      "studyType": "Master of Arts",
+      "startDate": "2019",
+      "endDate": "2021",
+      "location": "Lublin, Poland",
+      "note": "GPA 4.87/5.0; Santander Universidades Award for Best International Student (2019/2020)"
+    },
+    {
+      "institution": "Dr. Salim Ahmed Salim - Centre for Foreign Relations",
+      "area": "Economic Diplomacy",
+      "studyType": "Postgraduate Diploma",
+      "startDate": "2017",
+      "endDate": "2018",
+      "location": "Dar es Salaam, Tanzania",
+      "note": "GPA 4.2/5.0"
+    }
+  ],
+  "skills": {
+    "Operations & Service Delivery": [
+      "Payments Support",
+      "Booking Support",
+      "Case Management",
+      "SLA & KPI Management",
+      "Escalation Handling",
+      "Stakeholder Coordination",
+      "On-Time Resolution"
+    ],
+    "Risk, Quality & Compliance": [
+      "Regulatory Compliance Support",
+      "Quality Audits",
+      "Operational Controls",
+      "Audit Documentation",
+      "Risk Identification",
+      "Root-Cause Analysis",
+      "Reconciliation"
+    ],
+    "Tools & Analysis": [
+      "Salesforce CRM",
+      "CRM Systems",
+      "Microsoft 365",
+      "Google Workspace",
+      "Data Analysis",
+      "Reporting Dashboards"
+    ]
+  },
+  "languages": [
+    {
+      "language": "English",
+      "level": "Fluent"
+    },
+    {
+      "language": "Swahili",
+      "level": "Fluent"
+    },
+    {
+      "language": "Polish",
+      "level": "Beginner"
+    },
+    {
+      "language": "French",
+      "level": "Beginner"
+    }
+  ],
+  "certifications": [
+    "McKinsey Forward Program (2025)",
+    "Best Employee - Customer Service (2023/2024)"
+  ]
+}

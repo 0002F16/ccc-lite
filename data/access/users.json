@@ -12,8 +12,11 @@
       "displayName": "Brian",
       "role": "advisor",
       "scope": "selected-clients",
-      "clientIds": [],
-      "placeholderMessage": "No client profiles are assigned to brian yet. Add future client ids in data/access/users.json when Brian's workspace is ready."
+      "clientIds": [
+        "brian-chaggu-operations-compliance-support",
+        "brian-chaggu-international-relations-research"
+      ],
+      "placeholderMessage": "No client profiles are assigned to brian yet."
     },
     {
       "username": "gaurang",
