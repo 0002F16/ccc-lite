@@ -59,7 +59,7 @@
     ]
   },
   "summary_rules": {
-    "sentences": "exactly 4 concise lines/sentences",
+    "sentences": "max 4 concise sentences in one continuous paragraph",
     "requirements": [
       "Use the exact target job title in summary sentence 1",
       "Bold the target role title with HTML <b> tags",
@@ -68,7 +68,7 @@
       "No first-person pronouns",
       "No generic openers",
       "Sentence 3 should foreground exact JD terminology for key hard skills",
-      "Summary must render as exactly 4 lines in the final output"
+      "Summary should stay compact enough for strong one-page rendering without forced line breaks"
     ]
   },
   "experience_rules": {

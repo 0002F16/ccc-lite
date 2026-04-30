@@ -1165,6 +1165,11 @@ def enforce_page_rules(normalized: dict, profile: dict, job: dict, plan: dict) -
     return data, audit
 
 
+SUMMARY_MAX_SENTENCES = 4
+SUMMARY_MAX_WORDS = 68
+SUMMARY_MAX_CHARS = 460
+
+
 def split_summary_sentences(summary: str) -> list[str]:
     text = re.sub(r"<br\s*/?>", " ", str(summary or ""), flags=re.I)
     text = re.sub(r"\s+", " ", text).strip()
@@ -1174,53 +1179,41 @@ def split_summary_sentences(summary: str) -> list[str]:
     return parts or [text]
 
 
-def split_line_soft(text: str) -> list[str]:
-    text = re.sub(r"\s+", " ", str(text or "")).strip()
-    if not text:
-        return []
-    for marker in [", and ", " and ", "; ", ", ", " with ", " for ", " across "]:
-        if marker in text:
-            left, right = text.split(marker, 1)
-            left = left.strip()
-            right = right.strip()
-            if left and right:
-                if not left.endswith(('.', '!', '?')):
-                    left = f"{left}."
-                return [left, right]
-    words = text.split()
-    if len(words) >= 8:
-        mid = len(words) // 2
-        left = " ".join(words[:mid]).strip()
-        right = " ".join(words[mid:]).strip()
-        if left and right:
-            if not left.endswith(('.', '!', '?')):
-                left = f"{left}."
-            return [left, right]
-    return [text]
+def trim_summary_to_word_limit(text: str, max_words: int) -> str:
+    words = str(text or "").split()
+    if len(words) <= max_words:
+        return str(text or "").strip()
+    trimmed = " ".join(words[:max_words]).rstrip(",;:- ")
+    if not trimmed.endswith((".", "!", "?")):
+        trimmed += "."
+    return trimmed
 
 
-def enforce_four_line_summary(summary: str) -> str:
-    lines = split_summary_sentences(summary)
-    if not lines:
+def trim_summary_to_char_limit(text: str, max_chars: int) -> str:
+    text = str(text or "").strip()
+    if len(text) <= max_chars:
+        return text
+    trimmed = text[:max_chars].rstrip(",;:- ")
+    last_space = trimmed.rfind(" ")
+    if last_space > int(max_chars * 0.75):
+        trimmed = trimmed[:last_space]
+    trimmed = trimmed.rstrip(",;:- ")
+    trimmed = re.sub(r"\b(and|or|with|for|across|including|plus)$", "", trimmed, flags=re.I).rstrip(",;:- ")
+    if not trimmed.endswith((".", "!", "?")):
+        trimmed += "."
+    return trimmed
+
+
+def enforce_summary_limits(summary: str) -> str:
+    sentences = split_summary_sentences(summary)
+    if not sentences:
         return ""
-
-    while len(lines) < 4:
-        longest_idx = max(range(len(lines)), key=lambda i: len(re.sub(r"<[^>]+>", "", lines[i])))
-        split_lines = split_line_soft(lines[longest_idx])
-        if len(split_lines) == 1:
-            break
-        lines = lines[:longest_idx] + split_lines + lines[longest_idx + 1:]
-
-    if len(lines) > 4:
-        lines = lines[:3] + [" ".join(lines[3:]).strip()]
-
-    cleaned = []
-    for line in lines[:4]:
-        line = re.sub(r"\s+", " ", line).strip()
-        if line:
-            cleaned.append(line)
-
-    return "<br/>".join(cleaned[:4])
+    summary = " ".join(sentences[:SUMMARY_MAX_SENTENCES]).strip()
+    summary = re.sub(r"\s+", " ", summary)
+    summary = trim_summary_to_word_limit(summary, SUMMARY_MAX_WORDS)
+    summary = trim_summary_to_char_limit(summary, SUMMARY_MAX_CHARS)
+    summary = re.sub(r"\s+", " ", summary).strip()
+    return summary
 
 
 def normalize_resume_payload(data: dict, profile: dict) -> dict:
@@ -1238,7 +1231,7 @@ def normalize_resume_payload(data: dict, profile: dict) -> dict:
 
     normalized = dict(data)
     normalized["linkedin"] = str(normalized["linkedin"]).replace("https://", "").replace("http://", "")
-    normalized["summary"] = enforce_four_line_summary(normalized.get("summary", ""))
+    normalized["summary"] = enforce_summary_limits(normalized.get("summary", ""))
 
     profile_experience = profile.get("experience", []) or []
     normalized_experience = []
