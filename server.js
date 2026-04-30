@@ -912,8 +912,8 @@ app.post('/api/generate', async (req, res) => {
       '--llm-agent', llmAgent || 'samantha',
     ];
 
-    if (displayWorkAuthorization === false) {
-      args.push('--hide-work-authorization');
+    if (displayWorkAuthorization === true) {
+      args.push('--show-work-authorization');
     }
 
     const { stdout, stderr } = await execFileAsync(PYTHON_RUNTIME, args, {
