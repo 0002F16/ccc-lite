@@ -205,10 +205,33 @@ async function fetchJson(url, options) {
   if (handleUnauthorized(response)) {
     throw new Error('Authentication required.');
   }
-  const data = await response.json();
-  if (!response.ok) {
-    throw new Error(data.error || 'Request failed.');
+
+  const raw = await response.text();
+  let data = null;
+
+  try {
+    data = raw ? JSON.parse(raw) : null;
+  } catch {
+    data = null;
   }
+
+  if (!response.ok) {
+    if (data?.error) {
+      throw new Error(data.error);
+    }
+
+    const snippet = String(raw || '').replace(/\s+/g, ' ').trim();
+    if (snippet.startsWith('<')) {
+      throw new Error(`Server timeout or proxy error (${response.status}). Try again.`);
+    }
+
+    throw new Error(snippet || `Request failed (${response.status}).`);
+  }
+
+  if (!data) {
+    throw new Error('Server returned an invalid response.');
+  }
+
   return data;
 }
 
