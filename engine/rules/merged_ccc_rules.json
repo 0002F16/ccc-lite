@@ -1,0 +1,197 @@
+{
+  "version": "0.2",
+  "purpose": "Ruleset-aligned CCC resume engine configuration for staged planning, generation, and validation.",
+  "priorities": [
+    "resume quality first",
+    "truthful tailoring",
+    "page-budget enforcement",
+    "renderer-friendly structured output",
+    "validation before delivery"
+  ],
+  "input_gate": {
+    "required": [
+      "client_profile",
+      "job_description",
+      "job_title",
+      "company_name"
+    ],
+    "thin_input_triggers": [
+      "no numeric evidence in source experience",
+      "under 2 years total experience",
+      "fewer than 3 source roles"
+    ]
+  },
+  "page_budget_rules": {
+    "under_3_years": 1,
+    "three_plus_years": 2,
+    "notes": [
+      "Under 3 years = one page hard cap",
+      "3+ years = two pages maximum, not minimum"
+    ]
+  },
+  "positioning_rules": {
+    "bands": [
+      {"when": "0-3 years", "strategy": "growth_potential"},
+      {"when": "3-8 years", "strategy": "proven_executor"},
+      {"when": "8-15 years", "strategy": "strategic_leader"},
+      {"when": "career changer", "strategy": "transferable_value"}
+    ],
+    "title_match": "Use the exact target job title from the JD in summary sentence 1. If the current title differs, reflect the target title honestly without inventing direct experience."
+  },
+  "section_order": {
+    "junior": [
+      "name_contact",
+      "professional_summary",
+      "education",
+      "professional_experience",
+      "skills",
+      "projects",
+      "certifications"
+    ],
+    "mid_plus": [
+      "name_contact",
+      "professional_summary",
+      "professional_experience",
+      "education",
+      "skills",
+      "projects",
+      "certifications"
+    ]
+  },
+  "summary_rules": {
+    "sentences": "2-4",
+    "requirements": [
+      "Use the exact target job title in summary sentence 1",
+      "Bold the target role title with HTML <b> tags",
+      "Bold the strongest proof point or metric with HTML <b> tags",
+      "Use exact JD wording where natural",
+      "No first-person pronouns",
+      "No generic openers",
+      "Sentence 3 should foreground exact JD terminology for key hard skills"
+    ]
+  },
+  "experience_rules": {
+    "bullet_requirements": [
+      "Every bullet must begin with a bold lead phrase using HTML <b> tags",
+      "Bullets must explain action plus business or operational significance",
+      "Prefer metrics when grounded in source evidence",
+      "Do not invent unsupported facts",
+      "No passive filler",
+      "No banned phrases"
+    ],
+    "role_age_buckets": {
+      "current_or_last_2_years": {"min": 4, "max": 6},
+      "two_to_five_years": {"min": 3, "max": 4},
+      "five_to_ten_years": {"min": 2, "max": 3},
+      "ten_to_fifteen_years": {"min": 1, "max": 2},
+      "fifteen_plus_years": {"min": 0, "max": 0}
+    },
+    "metric_ratio_min": 0.4,
+    "max_roles": {
+      "one_page": 4,
+      "two_page": 6
+    }
+  },
+  "skills_rules": {
+    "requirements": [
+      "Hard skills only",
+      "Use exact JD terminology where possible",
+      "Return skills as a category-to-string mapping for renderer compatibility",
+      "Languages should be included in the final skills block as a category if relevant",
+      "LLM should choose the final category labels, items, and order before validator cleanup",
+      "Skills should be in final recruiter-facing form at generation time"
+    ],
+    "row_cap": {
+      "one_page": 3,
+      "two_page": 5
+    },
+    "validator_behavior": [
+      "preserve llm category order when possible",
+      "move Languages to the end",
+      "trim excess rows without rewriting the surviving categories",
+      "drop clearly unsupported skill items when necessary"
+    ]
+  },
+  "certification_rules": {
+    "keep_when": [
+      "relevant to target role",
+      "explicitly named or clearly implied by the JD",
+      "recognised issuer or strong role relevance",
+      "date or in-progress timing is present"
+    ],
+    "drop_when": [
+      "generic soft-skill certification",
+      "weak role relevance on one-page build",
+      "missing date and weak relevance"
+    ]
+  },
+  "banned_phrases": [
+    "responsible for",
+    "worked on",
+    "assisted with",
+    "assisted",
+    "helped",
+    "participated in",
+    "involved in",
+    "duties included",
+    "was tasked with"
+  ],
+  "truthfulness_rules": [
+    "Do not invent employers, promotions, credentials, tools, languages, or metrics",
+    "Do not claim direct domain expertise that the profile does not support",
+    "Use transferable framing honestly when the fit is adjacent",
+    "If evidence is thin, strengthen wording through framing, not fabrication"
+  ],
+  "output_schema": {
+    "type": "object",
+    "required": [
+      "name",
+      "city",
+      "phone",
+      "email",
+      "linkedin",
+      "summary",
+      "experience",
+      "education",
+      "skills"
+    ],
+    "properties": {
+      "name": "string",
+      "city": "string",
+      "phone": "string",
+      "email": "string",
+      "linkedin": "string",
+      "work_authorization": "string|null",
+      "summary": "string with HTML <b> tags allowed",
+      "experience": [
+        {
+          "title": "string",
+          "company": "string",
+          "location": "string",
+          "dates": "string",
+          "context": "string|null",
+          "bullets": ["string"]
+        }
+      ],
+      "education": [
+        {
+          "degree": "string",
+          "school": "string",
+          "dates": "string",
+          "note": "string|null"
+        }
+      ],
+      "skills": {
+        "<category>": "comma-separated skill string"
+      },
+      "certifications": ["string"],
+      "projects": [
+        {
+          "name": "string",
+          "context": "string|null",
+          "bullets": ["string"]
+        }
+      ]
+    }
+  }
+}

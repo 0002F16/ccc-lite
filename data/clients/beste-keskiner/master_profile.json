@@ -1,0 +1,143 @@
+{
+  "client": {
+    "name": "Beste Keskiner",
+    "email": "bestekeskiner04@gmail.com",
+    "phone": "+48 690 453 776",
+    "city": "Wrocław",
+    "country": "Poland",
+    "linkedin": "https://www.linkedin.com/in/beste-keskiner",
+    "label": "Operations, QA, and compliance professional"
+  },
+  "core_positioning": {
+    "level": "mid",
+    "strategy": "Transferable Value",
+    "notes": "Best fit is operations, QA, compliance-adjacent, and case-management roles. Procurement/category-management is a stretch fit and should be framed honestly as transferable operations rigor rather than direct category expertise."
+  },
+  "summary_base": [
+    "Operations, QA, and compliance professional with 4+ years of experience across high-volume case management, quality assurance, process documentation, and structured risk assessment in international environments.",
+    "Strongest evidence comes from reducing recurring error patterns by 30% at Keywords Studios, maintaining 100% data accuracy in compliance-driven case documentation, and evaluating AI-assisted outputs against quality thresholds.",
+    "Psychology training adds a genuine edge in pattern recognition, escalation judgment, and evidence-based documentation."
+  ],
+  "experience": [
+    {
+      "company": "American School of Wrocław",
+      "position": "Support & Operations Coordinator",
+      "location": "Wrocław, Poland",
+      "startDate": "2024-10",
+      "endDate": "Present",
+      "summary": "Operational coordination and structured case management in a compliance-driven institutional environment serving international families.",
+      "highlights": [
+        "**Maintained 100% data accuracy** across structured case records and confidential documentation for an active client portfolio, in full compliance with institutional data governance and audit protocols.",
+        "**Identified operational deviations early** through performance monitoring, producing structured progress reports that supported timely escalations and corrective action.",
+        "**Coordinated cross-department workflows** across teaching and administrative teams, ensuring consistent process execution and clean information handover on every shift.",
+        "**Applied structured risk assessment frameworks** to flag early warning indicators and escalate findings to senior multidisciplinary staff through defined procedures.",
+        "**Managed concurrent live cases** with scheduling, task tracking, and follow-up actions across multiple workstreams with zero missed deadlines."
+      ]
+    },
+    {
+      "company": "Keywords Studios",
+      "position": "Operations & QA Support Agent",
+      "location": "Warsaw, Poland",
+      "startDate": "2022-05",
+      "endDate": "2023-09",
+      "summary": "High-volume operations, quality assurance, and compliance case management for a global technology company supporting 400+ U.S. locations.",
+      "highlights": [
+        "**Cut recurring error patterns by 30%** through systematic root cause analysis on 100+ escalated and high-risk cases weekly, documenting corrective actions adopted across the operations team.",
+        "**Reviewed case resolutions against SOPs** and compliance standards using defined quality rubrics, delivering written corrective feedback that improved output accuracy.",
+        "**Evaluated AI-generated support responses** for factual accuracy, quality threshold compliance, and output appropriateness, escalating systemic defects to the development team.",
+        "**Monitored anomaly patterns across case queues** and identified systemic process gaps, reporting findings to responsible teams in workflows mirroring operational risk review.",
+        "**Built and maintained knowledge-base documentation** that reduced repeat query volume and improved first-contact resolution rates.",
+        "**Configured workflow macros** to streamline case handling, reducing manual processing steps and improving operational consistency team-wide."
+      ]
+    },
+    {
+      "company": "Roboto Global",
+      "position": "LQA & Compliance Tester",
+      "location": "Warsaw, Poland",
+      "startDate": "2021-11",
+      "endDate": "2022-05",
+      "summary": "Localization quality assurance for software products across multiple languages and release versions.",
+      "highlights": [
+        "**Ensured zero non-compliant outputs reached release** by reviewing localized software content against defined quality and compliance standards across multiple product versions.",
+        "**Documented defects in structured QA reports** and collaborated with QA and development teams to drive timely, compliant resolution.",
+        "**Maintained complete audit-trail discipline** across identified issues in line with team documentation protocols."
+      ]
+    },
+    {
+      "company": "Bir Umut Rehabilitation Center",
+      "position": "Risk Assessment & Case Management Specialist",
+      "location": "Denizli, Türkiye",
+      "startDate": "2020-08",
+      "endDate": "2021-10",
+      "summary": "Structured risk evaluation and confidential case management in a regulated clinical environment.",
+      "highlights": [
+        "**Conducted structured behavioural risk assessments** using evidence-based clinical frameworks, documenting findings with high accuracy under confidentiality requirements.",
+        "**Escalated early risk indicators through standard procedures** using evidence-backed reporting and clean documentation handoff.",
+        "**Maintained reliable confidential records** across a full client case portfolio with strong audit-trail integrity.",
+        "**Coordinated multi-team interventions** based on documented risk assessments and agreed follow-up actions."
+      ]
+    },
+    {
+      "company": "Pamukkale University Sport Center",
+      "position": "Customer Service & Administrative Assistant",
+      "location": "Denizli, Türkiye",
+      "startDate": "2016-03",
+      "endDate": "2017-03",
+      "summary": "Front-desk administration, customer support, and transaction processing in an institutional setting.",
+      "highlights": [
+        "**Processed registrations and financial transactions accurately** while maintaining compliant membership records.",
+        "**Handled inbound client queries efficiently** and supported smooth daily administrative operations."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Economics and Human Sciences",
+      "area": "Psychology",
+      "studyType": "MSc",
+      "startDate": "2021",
+      "endDate": "2023",
+      "location": "Warsaw, Poland"
+    },
+    {
+      "institution": "Pamukkale University",
+      "area": "Psychological Counselling & Guidance",
+      "studyType": "BSc",
+      "startDate": "2015",
+      "endDate": "2019",
+      "location": "Denizli, Türkiye"
+    }
+  ],
+  "skills": {
+    "Operations & Quality": [
+      "Root Cause Analysis",
+      "Quality Assurance",
+      "Case Management",
+      "SOP Compliance",
+      "Process Documentation",
+      "Workflow Optimisation",
+      "Escalation Management",
+      "Knowledge Base Management"
+    ],
+    "Risk & Compliance": [
+      "Risk Identification",
+      "Audit Trail Management",
+      "Data Accuracy",
+      "Confidentiality Compliance",
+      "Operational Data Integrity",
+      "Corrective Action Reporting"
+    ],
+    "Tools": [
+      "SQL",
+      "Python",
+      "Microsoft Office",
+      "Google Workspace",
+      "CRM Systems",
+      "Ticketing Systems"
+    ]
+  },
+  "languages": [
+    {"language": "Turkish", "level": "Native"},
+    {"language": "English", "level": "C1"}
+  ]
+}

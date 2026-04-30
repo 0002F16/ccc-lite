@@ -1,0 +1,21 @@
+{
+  "client": {
+    "name": "Amandeep Kaur",
+    "email": "",
+    "phone": "",
+    "city": "",
+    "country": "",
+    "linkedin": "",
+    "label": "Profile pending verified source data"
+  },
+  "core_positioning": {
+    "level": "mid",
+    "strategy": "Transferable Value",
+    "notes": "Added to Studio Lite selection so the client is visible in the workflow, but the source materials currently available in the CCC client folder do not contain usable resume facts. The DOCX file is effectively blank and the KPI tracker is only an operations template. Do not infer work history, education, or skills until verified source material is added."
+  },
+  "summary_base": [],
+  "experience": [],
+  "education": [],
+  "skills": {},
+  "languages": []
+}

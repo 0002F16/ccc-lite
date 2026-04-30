@@ -1,0 +1,142 @@
+{
+  "client": {
+    "name": "Narmina Ibrahimova",
+    "email": "ibrahimovanarmina1998@gmail.com",
+    "phone": "+48 510 851 753",
+    "city": "Kraków",
+    "country": "Poland",
+    "linkedin": "linkedin.com/in/narmina-ibrahimova-product-controller",
+    "label": "Product control and financial reporting professional",
+    "work_authorization": "TRC valid until June 2028"
+  },
+  "core_positioning": {
+    "level": "mid",
+    "strategy": "Transferable Value",
+    "notes": "Best fit is Product Controller, P&L Controller, finance control, financial reporting, reconciliation, and close-cycle roles in multinational banking, shared-services, and finance operations environments. Strongest value comes from P&L production, balance-sheet substantiation, month-end and quarter-end support, cross-functional issue resolution, and disciplined reporting accuracy. Avoid overselling advanced automation, SQL/Python-heavy analytics, or senior risk/regulatory ownership until further evidence exists."
+  },
+  "summary_base": [
+    "Product control and financial reporting professional with nearly 3 years of experience across P&L production, balance sheet substantiation, General Ledger management, reconciliation, and month-end close in Global Markets environments at HSBC.",
+    "Strongest evidence includes identifying a cross-system FX rate error during quarter-end that prevented incorrect P&L reporting across EMEA, supporting daily P&L across 3 trading desks, and stepping into critical GL posting coverage during month-end close.",
+    "Best positioned for Product Controller, Financial Control, Financial Reporting, reconciliation, and finance operations roles where analytical precision, control discipline, and reliable execution matter."
+  ],
+  "experience": [
+    {
+      "company": "HSBC",
+      "position": "Product Controller",
+      "location": "Kraków, Poland",
+      "startDate": "2025-03",
+      "endDate": "Present",
+      "summary": "Current product control role covering daily P&L monitoring, month-end support, issue investigation, and cross-functional reporting coordination across Global Markets trading desks.",
+      "highlights": [
+        "**Monitored daily P&L across 3 Global Markets trading desks** and verified attribution across market movements, new trades, and valuation components in coordination with Front Office teams.",
+        "**Identified a cross-system FX rate error during quarter-end** and prepared corrective follow-up actions that prevented incorrect P&L reporting across EMEA business desks.",
+        "**Protected month-end GL posting continuity** as the only team member with access to a newly launched system, uploading journals for Product Control business desks during the close window.",
+        "**Mentored and trained 4 team members** and created process instruction documents for newly implemented procedures.",
+        "**Resolved a portfolio discrepancy during month-end Trueup** by tracing the hierarchy issue, recalculating portfolio-level P&L, and clearing the gap before close."
+      ]
+    },
+    {
+      "company": "HSBC Service Delivery",
+      "position": "Junior Product Controller",
+      "location": "Kraków, Poland",
+      "startDate": "2024-02",
+      "endDate": "2025-02",
+      "summary": "End-to-end P&L production and control role supporting assigned Global Markets trading desks across daily, intramonth, and month-end cycles.",
+      "highlights": [
+        "**Delivered end-to-end daily P&L production** for assigned trading desks, reviewing new trades, market environment, carry, and cancel/amend adjustments.",
+        "**Performed balance sheet and OBS substantiation** in line with HSBC accounting policies and internal control requirements.",
+        "**Coordinated with Front Office, Valuation Control, and Accounting Control** to resolve pricing and booking discrepancies and prepare variance commentary for senior review."
+      ]
+    },
+    {
+      "company": "HSBC Service Delivery",
+      "position": "Junior Product Controller Intern",
+      "location": "Kraków, Poland",
+      "startDate": "2023-08",
+      "endDate": "2024-01",
+      "summary": "Internship supporting daily and monthly product-control reporting, reconciliation, and balance-sheet validation tasks within Global Markets Finance.",
+      "highlights": [
+        "**Prepared daily and monthly P&L reconciliation reports** and balance-sheet validation outputs against Global Markets Finance standards.",
+        "**Maintained data accuracy across assigned portfolios** through structured reporting and validation support.",
+        "**Contributed to reporting-process improvement efforts** and manual-reporting automation support; exact scope should be verified before stronger wording is used."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "WSZIA",
+      "area": "Business Administration and Management",
+      "studyType": "MSc",
+      "startDate": "2022",
+      "endDate": "2024",
+      "location": "Opole, Poland"
+    },
+    {
+      "institution": "Azerbaijan State Oil and Industry University",
+      "area": "World Economy",
+      "studyType": "BSc",
+      "startDate": "2019",
+      "endDate": "2019",
+      "location": "Baku, Azerbaijan"
+    }
+  ],
+  "skills": {
+    "Product Control & Reporting": [
+      "Product Control",
+      "P&L Production",
+      "P&L Attribution",
+      "Financial Reporting",
+      "Balance Sheet Substantiation",
+      "General Ledger Management",
+      "Month-End Close",
+      "Quarter-End Close",
+      "Variance Analysis",
+      "Reconciliation",
+      "OBS Review",
+      "Journal Preparation",
+      "Suspense Account Investigation"
+    ],
+    "Accounting & Controls": [
+      "IFRS",
+      "GAAP",
+      "Financial Control",
+      "Internal Controls",
+      "Root Cause Analysis",
+      "Cross-Functional Collaboration",
+      "Process Documentation",
+      "Team Training",
+      "Mentoring"
+    ],
+    "Systems & Tools": [
+      "PC Portal 1",
+      "PC Portal 2",
+      "Murex",
+      "Trading Canvas",
+      "Summit HUB",
+      "Pegasus",
+      "HMS",
+      "FTP",
+      "River",
+      "Microsoft Excel",
+      "Microsoft Outlook"
+    ]
+  },
+  "languages": [
+    {
+      "language": "Azerbaijani",
+      "level": "Native"
+    },
+    {
+      "language": "English",
+      "level": "B2 (IELTS 6.5)"
+    },
+    {
+      "language": "Turkish",
+      "level": "Unverified"
+    },
+    {
+      "language": "Russian",
+      "level": "Unverified"
+    }
+  ]
+}

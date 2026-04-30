@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CCC Resume Studio Lite</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div>
+          <div class="eyebrow">CCC Resume Studio Lite</div>
+          <h1>Generate a resume fast</h1>
+          <p class="muted">No run history, no stored jobs, no ledger. Pick a client, paste the JD, generate the current resume.</p>
+        </div>
+
+        <form id="generate-form" class="form-stack">
+          <label>
+            <span>Client</span>
+            <select id="client-select" name="clientName" required></select>
+          </label>
+
+          <label>
+            <span>Company</span>
+            <input id="company-input" name="company" type="text" placeholder="Aon" required />
+          </label>
+
+          <label>
+            <span>Position</span>
+            <input id="position-input" name="position" type="text" placeholder="Junior FP&A Analyst" required />
+          </label>
+
+          <label>
+            <span>Job description</span>
+            <textarea id="jd-input" name="jdText" rows="16" placeholder="Paste the full JD here..." required></textarea>
+          </label>
+
+          <div class="provider-status-card">
+            <div>
+              <div class="provider-status-label">Active model provider</div>
+              <div id="provider-indicator" class="provider-indicator provider-loading">Checking…</div>
+            </div>
+            <div id="provider-model" class="provider-model muted">Loading model…</div>
+          </div>
+
+          <button id="generate-button" type="submit">Generate resume</button>
+        </form>
+
+        <div class="sidebar-card">
+          <div class="card-title">Run status</div>
+          <pre id="status-box">Loading clients…</pre>
+        </div>
+      </aside>
+
+      <main class="main-pane">
+        <section class="preview-toolbar">
+          <div>
+            <div class="eyebrow">Current preview</div>
+            <h2 id="preview-title">No run yet</h2>
+            <p id="preview-subtitle" class="muted">Generate a run from the left panel. Only the current in-memory run is kept while the server is alive.</p>
+          </div>
+          <div class="toolbar-actions">
+            <a id="open-pdf-link" class="button ghost disabled" href="#" target="_blank" rel="noreferrer">Open PDF</a>
+            <a id="download-pdf-link" class="button disabled" href="#" download>Export PDF</a>
+          </div>
+        </section>
+
+        <section class="content-grid">
+          <div class="preview-panel">
+            <iframe id="pdf-frame" title="Resume preview"></iframe>
+          </div>
+
+          <div class="details-panel">
+            <div class="detail-card">
+              <div class="card-title">Summary</div>
+              <div id="summary-output" class="rich-text muted">Nothing generated yet.</div>
+            </div>
+
+            <div class="detail-card">
+              <div class="card-title">Skills</div>
+              <div id="skills-output" class="skills-list muted">Nothing generated yet.</div>
+            </div>
+
+            <div class="detail-card">
+              <div class="card-title">Audits</div>
+              <div id="audit-output" class="audit-list muted">No audit output yet.</div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>

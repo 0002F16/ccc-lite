@@ -1,0 +1,170 @@
+{
+  "client": {
+    "name": "Nikul Padamani",
+    "email": "nvpadamani@gmail.com",
+    "phone": "+48 579 218 184",
+    "city": "Warsaw",
+    "country": "Poland",
+    "linkedin": "",
+    "label": "Accounts payable, P2P, and finance operations professional",
+    "work_authorization": "Valid till October 2026"
+  },
+  "core_positioning": {
+    "level": "mid",
+    "strategy": "Transferable Value",
+    "notes": "Best fit is accounts payable, P2P, finance operations, and analyst-track roles in SSC, BPO, and financial-services environments. AR, GL, fund-accounting, and compliance/AML roles are secondary or stretch paths and should be framed honestly from his transaction-processing, reconciliation, and workflow-analysis background. Position him toward titles with 'Analyst' or 'Specialist' when possible, while avoiding claims of deeper ownership or technical specialization not supported by source evidence."
+  },
+  "summary_base": [
+    "Accounts payable and finance operations professional with 6+ years of experience across financial services, real estate, accounting operations, and data-processing environments in Poland and India.",
+    "Strongest evidence includes handling 200+ daily invoices with high accuracy, processing global invoices and payment groups in Oracle and OnBase, reconciling vendor and client accounts, and resolving 100+ weekly ticketed data issues under SLA pressure.",
+    "Best positioned for AP, P2P, finance operations, and analyst-track roles where transaction accuracy, reconciliation discipline, and systems fluency matter."
+  ],
+  "experience": [
+    {
+      "company": "Nielsen IQ",
+      "position": "Data Processing Specialist",
+      "location": "Warsaw, Poland",
+      "startDate": "2024-08",
+      "endDate": "2025-04",
+      "summary": "Data-processing and ticket-resolution role supporting large-scale consumer intelligence workflows for global FMCG clients.",
+      "highlights": [
+        "**Optimized data extraction logic for 60M products** by developing advanced Excel formulas that improved reporting relevance for large-scale client requests.",
+        "**Eliminated data duplication across internal systems** by identifying entry errors and reporting system issues to supervisors for immediate resolution.",
+        "**Resolved 100+ weekly client tickets** by troubleshooting data anomalies and delivering accurate solutions within strict SLA timelines."
+      ]
+    },
+    {
+      "company": "Mr. Clean Sp. z o.o.",
+      "position": "Accountant",
+      "location": "Warsaw, Poland",
+      "startDate": "2023-01",
+      "endDate": "2024-07",
+      "summary": "Accounting support role covering bookkeeping, ledger maintenance, and query resolution in a professional-services environment.",
+      "highlights": [
+        "**Managed full-cycle bookkeeping for transactional documents** while maintaining accurate ledger records and financial documentation.",
+        "**Resolved complex accounting and journal-related queries** and acted as a primary point of contact for vendor inquiries.",
+        "**Maintained reliable financial records** across day-to-day accounting operations with strong document-control discipline."
+      ]
+    },
+    {
+      "company": "MoneyGram International",
+      "position": "Accounts Payable Specialist",
+      "location": "Warsaw, Poland",
+      "startDate": "2022-07",
+      "endDate": "2022-12",
+      "summary": "Global AP role covering invoice processing, payment-group handling, and exception resolution in a regulated financial-services environment.",
+      "highlights": [
+        "**Processed global invoices through Oracle** while retrieving workflow images from OnBase to maintain audit readiness and regulatory compliance.",
+        "**Managed P2P payment groups across multiple payment methods** including electronic payments, wire transfers, and quick checks across global time zones.",
+        "**Mitigated payment exceptions** by researching return payments and coordinating with procurement to release blocks on pending purchase orders."
+      ]
+    },
+    {
+      "company": "CBRE Business Services",
+      "position": "Accounts Payable Accountant",
+      "location": "Warsaw, Poland",
+      "startDate": "2021-08",
+      "endDate": "2022-06",
+      "summary": "Accounts payable and reconciliation role supporting high-volume vendor portfolios in a global real-estate services environment.",
+      "highlights": [
+        "**Redesigned training documentation for new joiners** and became the team's designated lead for onboarding and technical training on updated materials.",
+        "**Reconciled client accounts and service-charge budgets** for high-volume vendor portfolios using Yardi Voyager.",
+        "**Analyzed aged items, debit balances, and rejected invoices** to support vendor relations and timely accounting resolution."
+      ]
+    },
+    {
+      "company": "7 Star Company",
+      "position": "Accountant",
+      "location": "Surat, India",
+      "startDate": "2014-01",
+      "endDate": "2017-08",
+      "summary": "Early-career accounting role handling reconciliations, purchase-order controls, and document-heavy finance operations.",
+      "highlights": [
+        "**Restructured physical documentation** by clearing a major backlog of vendor documents during peak-volume periods.",
+        "**Executed bank reconciliations and reviewed daily transactions** to maintain accurate GR/IR matching against purchase orders.",
+        "**Supported day-to-day accounting operations** with disciplined handling of physical and transactional finance records."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Alcide de Gasperi University",
+      "area": "Business Administration",
+      "studyType": "MBA",
+      "startDate": "2019",
+      "endDate": "2019",
+      "location": "Warsaw, Poland"
+    },
+    {
+      "institution": "Veer Narmad South Gujarat University",
+      "area": "Accounting & Auditing",
+      "studyType": "Master of Commerce",
+      "startDate": "2017",
+      "endDate": "2017",
+      "location": "India"
+    },
+    {
+      "institution": "Veer Narmad South Gujarat University",
+      "area": "Accounting & Finance",
+      "studyType": "Bachelor of Commerce",
+      "startDate": "2013",
+      "endDate": "2013",
+      "location": "India"
+    }
+  ],
+  "skills": {
+    "Accounting & Finance": [
+      "Procure-to-Pay (P2P)",
+      "Accounts Payable",
+      "3-Way Matching",
+      "General Ledger",
+      "NAV Calculation",
+      "GAAP",
+      "IAS",
+      "Indirect Tax",
+      "Bank Reconciliation",
+      "Vendor Reconciliation",
+      "Invoice Processing",
+      "Payment Exception Resolution"
+    ],
+    "Operations & Analysis": [
+      "Financial Operations",
+      "Data Processing",
+      "Ticket Resolution",
+      "Root Cause Identification",
+      "Reporting Support",
+      "SLA-Based Case Handling",
+      "Training Documentation",
+      "Process Improvement"
+    ],
+    "Tools": [
+      "Oracle",
+      "Yardi Voyager",
+      "OnBase",
+      "SAP (Basic)",
+      "Tally ERP 9.0",
+      "Microsoft Excel",
+      "VLOOKUP",
+      "XLOOKUP",
+      "Pivot Tables"
+    ]
+  },
+  "languages": [
+    {
+      "language": "English",
+      "level": "Professional B2"
+    },
+    {
+      "language": "Hindi",
+      "level": "Native"
+    },
+    {
+      "language": "Gujarati",
+      "level": "Native"
+    },
+    {
+      "language": "Polish",
+      "level": "Basic A1"
+    }
+  ]
+}

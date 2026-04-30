@@ -1,0 +1,116 @@
+{
+  "client": {
+    "name": "Ganbar Shabanov",
+    "email": "ganbarshabanov@gmail.com",
+    "phone": "+48 513 541 159",
+    "city": "Kraków",
+    "country": "Poland",
+    "linkedin": "https://www.linkedin.com/in/ganbar-shabanov-finance",
+    "label": "Junior finance and accounting professional with reconciliation, SAP, SOX, and cross-market financial operations experience",
+    "work_authorization": "Work permit valid until Aug 2028"
+  },
+  "core_positioning": {
+    "level": "junior",
+    "strategy": "Transferable Value",
+    "notes": "Best fit is junior finance analyst, FP&A-adjacent, management reporting, reconciliation, controls, and finance operations roles. Position honestly as a rising operator moving from finance operations and dispute analysis toward FP&A without claiming direct budgeting or forecasting ownership. Avoid BPO/outsourcing companies and customer-service-heavy finance roles per source guidance."
+  },
+  "summary_base": [
+    "Junior finance and accounting professional with 1+ year of hands-on experience in financial data analysis, account reconciliation, invoice dispute investigation, and SOX-related review work across 6 European markets.",
+    "Strongest evidence includes recovering up to $20,000 monthly in disputed invoice value, handling roughly $50,000 in monthly disputed invoices, and rebuilding a 100+ page internal process guide used across the department.",
+    "Brings practical SAP and advanced Excel experience, stakeholder-facing reporting exposure, strong learning velocity, and active ACCA F3 study toward a more analytical finance track."
+  ],
+  "experience": [
+    {
+      "company": "Capgemini",
+      "position": "Finance & Accounting Process Junior Specialist",
+      "location": "Kraków, Poland",
+      "startDate": "2025-03",
+      "endDate": "Present",
+      "summary": "Global IT services firm (10,000+ employees). Primary analyst for the Turkey market with active support across Portugal, Poland, Austria, Switzerland, and Spain — managing invoice disputes, account reconciliation, and financial process compliance for the FedEx account.",
+      "highlights": [
+        "**Recovered up to $20,000 monthly in disputed invoice value** by investigating client claims across 6 European markets, reconciling account statements in SAP, and processing credit notes, debit notes, and rebills in Mainframe.",
+        "**Covered the Turkey market solo within the first 2 months** during a team shortage, scaling from 4-5 expected cases per day to 25 cases per day and earning management recognition.",
+        "**Investigated roughly $50,000 in monthly disputed invoices** for key accounts in Portugal and Spain, approving 50-60% of claims with credits and rejecting the rest with documented evidence.",
+        "**Delivered monthly SOX self-assessment reviews** by extracting SAP reports, restructuring data in Excel, and presenting selected high-value cases to client project owners.",
+        "**Rebuilt the department's 100+ page Rebill DDP** into a single structured reference guide now used across the department.",
+        "**Trained new team members on live finance processes** across multiple markets to speed up independent case handling."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "WSB Akademia",
+      "area": "Business and Management",
+      "studyType": "Bachelor's",
+      "startDate": "2021",
+      "endDate": "2024",
+      "location": "Kraków, Poland"
+    },
+    {
+      "institution": "Azerbaijan State Oil and Industry University",
+      "area": "World Economy",
+      "studyType": "Bachelor's",
+      "startDate": "2015",
+      "endDate": "2019",
+      "location": "Baku, Azerbaijan"
+    }
+  ],
+  "skills": {
+    "Finance & Analysis": [
+      "Financial Data Analysis",
+      "Financial Reporting",
+      "Account Reconciliation",
+      "Variance Identification",
+      "SOX Compliance",
+      "Internal Controls",
+      "Invoice Dispute Investigation",
+      "Bad Debt Monitoring",
+      "Credit & Debit Note Processing"
+    ],
+    "Systems & Tools": [
+      "SAP",
+      "Microsoft Excel",
+      "Pivot Tables",
+      "Excel Macros",
+      "Salesforce",
+      "Mainframe",
+      "SharePoint"
+    ],
+    "Operations": [
+      "Process Documentation",
+      "Stakeholder Reporting",
+      "Cross-functional Coordination",
+      "Case Management",
+      "Training"
+    ]
+  },
+  "languages": [
+    {
+      "language": "Azerbaijani",
+      "level": "Native"
+    },
+    {
+      "language": "Turkish",
+      "level": "C1"
+    },
+    {
+      "language": "Russian",
+      "level": "C1"
+    },
+    {
+      "language": "English",
+      "level": "B2"
+    },
+    {
+      "language": "Polish",
+      "level": "B1"
+    }
+  ],
+  "certifications": [
+    "ACCA F3 Financial Accounting (In Progress — Expected Jun 2026)",
+    "MS Excel for Finance Specialists (Udemy)",
+    "Financial Statements Analysis (LinkedIn Learning)",
+    "Investment Banking (LinkedIn Learning)",
+    "Business English (LinkedIn Learning)"
+  ]
+}
