@@ -3,6 +3,7 @@ const clientSelect = document.getElementById('client-select');
 const companyInput = document.getElementById('company-input');
 const positionInput = document.getElementById('position-input');
 const jdInput = document.getElementById('jd-input');
+const workRightsToggle = document.getElementById('work-rights-toggle');
 const providerIndicator = document.getElementById('provider-indicator');
 const providerModel = document.getElementById('provider-model');
 const generateButton = document.getElementById('generate-button');
@@ -155,6 +156,7 @@ function setFormEnabled(enabled) {
   companyInput.disabled = !enabled;
   positionInput.disabled = !enabled;
   jdInput.disabled = !enabled;
+  workRightsToggle.disabled = !enabled;
   generateButton.disabled = !enabled;
 }
 
@@ -265,6 +267,7 @@ async function handleGenerate(event) {
     company: companyInput.value.trim(),
     position: positionInput.value.trim(),
     jdText: jdInput.value.trim(),
+    displayWorkAuthorization: workRightsToggle.checked,
   };
 
   try {

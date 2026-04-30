@@ -1458,6 +1458,7 @@ def main():
     ap.add_argument("--gemini-model", default=os.environ.get("GEMINI_MODEL", "gemini-2.5-flash"))
     ap.add_argument("--gemini-api-key", default=os.environ.get("GEMINI_API_KEY", ""))
     ap.add_argument("--output-dir", default=str(DEFAULT_RUNS_DIR))
+    ap.add_argument("--hide-work-authorization", action="store_true")
     args = ap.parse_args()
 
     if not args.job_id and not args.job_file:
@@ -1591,6 +1592,8 @@ def main():
                 (run_dir / "bullet_writer.error.txt").write_text(bullet_writer_error + "\n", encoding="utf-8")
 
         normalized = normalize_resume_payload(resume_json, profile)
+        if args.hide_work_authorization:
+            normalized.pop("work_authorization", None)
         normalized, enforcement_audit = enforce_page_rules(normalized, profile, job, plan)
         resume_json_path = run_dir / "resume.json"
         resume_json_path.write_text(json.dumps(normalized, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -1689,6 +1692,7 @@ def main():
         },
         "page_budget": plan["page_budget"],
         "positioning": plan["positioning"],
+        "display_work_authorization": not args.hide_work_authorization,
         "skills_plan_error": skills_plan_error,
         "skills_writer_error": skills_writer_error,
         "bullet_plan_error": bullet_plan_error,

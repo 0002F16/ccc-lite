@@ -841,7 +841,14 @@ app.get('/current-run/:artifact', requireAuth, async (req, res) => {
 });
 
 app.post('/api/generate', async (req, res) => {
-  const { clientName, company, position, jdText, llmAgent } = req.body || {};
+  const {
+    clientName,
+    company,
+    position,
+    jdText,
+    llmAgent,
+    displayWorkAuthorization,
+  } = req.body || {};
 
   if (!clientName || !company || !position || !jdText) {
     return res.status(400).json({
@@ -904,6 +911,10 @@ app.post('/api/generate', async (req, res) => {
       '--gemini-model', state.geminiModel,
       '--llm-agent', llmAgent || 'samantha',
     ];
+
+    if (displayWorkAuthorization === false) {
+      args.push('--hide-work-authorization');
+    }
 
     const { stdout, stderr } = await execFileAsync(PYTHON_RUNTIME, args, {
       cwd: ENGINE_ROOT,
