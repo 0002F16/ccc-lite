@@ -1437,7 +1437,20 @@ def run_model_task(args, prompts: dict[str, str], run_dir: Path, task_name: str,
     if args.llm_provider == "openai":
         if not args.openai_api_key:
             raise SystemExit("missing OpenAI API key. Provide --openai-api-key or set OPENAI_API_KEY.")
-        return run_llm(prompts, "openai", args.openai_model, args.openai_api_key, run_dir, max_attempts=max_attempts, task_name=task_name)
+        try:
+            return run_llm(prompts, "openai", args.openai_model, args.openai_api_key, run_dir, max_attempts=max_attempts, task_name=task_name)
+        except Exception as e:
+            error_text = str(e)
+            has_gemini_fallback = bool(getattr(args, "gemini_api_key", ""))
+            openai_quota_blocked = "insufficient_quota" in error_text or "OpenAI HTTP 429" in error_text
+            if has_gemini_fallback and openai_quota_blocked:
+                fallback_note = (
+                    f"OpenAI provider failed for {task_name}; auto-falling back to Gemini.\n"
+                    f"OpenAI error: {error_text}\n"
+                )
+                (run_dir / f"{task_name}.provider_fallback.txt").write_text(fallback_note, encoding="utf-8")
+                return run_llm(prompts, "gemini", args.gemini_model, args.gemini_api_key, run_dir, max_attempts=max_attempts, task_name=task_name)
+            raise
     if args.llm_provider == "gemini":
         if not args.gemini_api_key:
             raise SystemExit("missing Gemini API key. Provide --gemini-api-key or set GEMINI_API_KEY.")

@@ -576,6 +576,108 @@ async function loadRunBundle(runDir, tempRoot) {
   };
 }
 
+
+
+function extractRunFailureErrorPath(...chunks) {
+  const combined = chunks
+    .filter(Boolean)
+    .map((chunk) => String(chunk))
+    .join('\n');
+  const match = combined.match(/Run failed\. See (\/[^\s]+\/error\.txt)/);
+  return match ? match[1] : null;
+}
+
+async function readTextIfExists(filePath) {
+  if (!filePath) return null;
+  if (!(await exists(filePath))) return null;
+  return fsp.readFile(filePath, 'utf8');
+}
+
+async function collectRunFailureDetails(error, stdout, stderr) {
+  const errorPath = extractRunFailureErrorPath(error?.message, stdout, stderr);
+  if (!errorPath) return null;
+
+  const runDir = path.dirname(errorPath);
+  const metadataPath = path.join(runDir, 'metadata.json');
+  const attemptsDir = path.join(runDir, 'attempts');
+
+  const [engineErrorText, metadataText] = await Promise.all([
+    readTextIfExists(errorPath),
+    readTextIfExists(metadataPath),
+  ]);
+
+  let metadata = null;
+  if (metadataText) {
+    try {
+      metadata = JSON.parse(metadataText);
+    } catch {
+      metadata = null;
+    }
+  }
+
+  let providerFallbackNotes = [];
+  let attemptFiles = [];
+  try {
+    const entries = await fsp.readdir(runDir, { withFileTypes: true });
+    providerFallbackNotes = await Promise.all(
+      entries
+        .filter((entry) => entry.isFile() && entry.name.endsWith('.provider_fallback.txt'))
+        .map(async (entry) => ({
+          file: entry.name,
+          text: String(await fsp.readFile(path.join(runDir, entry.name), 'utf8')).trim(),
+        }))
+    );
+  } catch {
+    providerFallbackNotes = [];
+  }
+
+  try {
+    const entries = await fsp.readdir(attemptsDir, { withFileTypes: true });
+    attemptFiles = entries
+      .filter((entry) => entry.isFile())
+      .map((entry) => entry.name)
+      .sort();
+  } catch {
+    attemptFiles = [];
+  }
+
+  const latestAttemptErrorFile = [...attemptFiles]
+    .reverse()
+    .find((name) => name.endsWith('.stderr.txt'));
+
+  const latestAttemptError = latestAttemptErrorFile
+    ? await readTextIfExists(path.join(attemptsDir, latestAttemptErrorFile))
+    : null;
+
+  const detailLines = [];
+  if (engineErrorText) detailLines.push(String(engineErrorText).trim());
+  if (providerFallbackNotes.length > 0) {
+    detailLines.push('Provider fallback notes:');
+    for (const note of providerFallbackNotes) {
+      detailLines.push(`- ${note.file}: ${note.text}`);
+    }
+  }
+  if (latestAttemptError) {
+    detailLines.push(`Latest attempt error (${latestAttemptErrorFile}):`);
+    detailLines.push(String(latestAttemptError).trim());
+  }
+
+  const userMessage = detailLines.length > 0
+    ? detailLines.join('\n\n')
+    : 'Resume generation failed. Check the server run artifacts for details.';
+
+  return {
+    errorPath,
+    runDir,
+    userMessage,
+    engineError: engineErrorText ? String(engineErrorText).trim() : null,
+    metadata,
+    providerFallbackNotes,
+    latestAttemptErrorFile: latestAttemptErrorFile || null,
+    latestAttemptError: latestAttemptError ? String(latestAttemptError).trim() : null,
+  };
+}
+
 async function cleanupCurrentRun() {
   if (!currentRun?.tempRoot) return;
   const tempRoot = currentRun.tempRoot;
@@ -950,10 +1052,12 @@ app.post('/api/generate', async (req, res) => {
     }
     const stderr = error?.stderr ? String(error.stderr) : '';
     const stdout = error?.stdout ? String(error.stdout) : '';
+    const failureDetails = await collectRunFailureDetails(error, stdout, stderr);
     return res.status(500).json({
-      error: error.message,
+      error: failureDetails?.userMessage || error.message,
       stdout,
       stderr,
+      failureDetails,
     });
   }
 });
